@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace CheckPoint.MVC.Models
+namespace CheckPoint.Data
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
@@ -24,7 +24,9 @@ namespace CheckPoint.MVC.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-
+        public DbSet<Game> Games { get; set; }
+        public DbSet<Platform> Platforms { get; set; }
+        public DbSet<Review> Reviews { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

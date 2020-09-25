@@ -5,6 +5,12 @@ VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckPoint.MVC", "CheckPoint.MVC\CheckPoint.MVC.csproj", "{918D2F0E-4E16-49AA-B483-C848BBE07680}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckPoint.Data", "CheckPoint.Data\CheckPoint.Data.csproj", "{97F8430C-F700-4624-B3E6-E12C46EDB489}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckPoint.Models", "CheckPoint.Models\CheckPoint.Models.csproj", "{AB8F7A3E-5450-4094-A557-F3361362ED56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckPoint.Services", "CheckPoint.Services\CheckPoint.Services.csproj", "{A94DDB5A-E55E-47A0-9ACD-D0912E9F1199}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{918D2F0E-4E16-49AA-B483-C848BBE07680}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{918D2F0E-4E16-49AA-B483-C848BBE07680}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{918D2F0E-4E16-49AA-B483-C848BBE07680}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97F8430C-F700-4624-B3E6-E12C46EDB489}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97F8430C-F700-4624-B3E6-E12C46EDB489}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97F8430C-F700-4624-B3E6-E12C46EDB489}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97F8430C-F700-4624-B3E6-E12C46EDB489}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB8F7A3E-5450-4094-A557-F3361362ED56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB8F7A3E-5450-4094-A557-F3361362ED56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB8F7A3E-5450-4094-A557-F3361362ED56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB8F7A3E-5450-4094-A557-F3361362ED56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A94DDB5A-E55E-47A0-9ACD-D0912E9F1199}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A94DDB5A-E55E-47A0-9ACD-D0912E9F1199}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A94DDB5A-E55E-47A0-9ACD-D0912E9F1199}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A94DDB5A-E55E-47A0-9ACD-D0912E9F1199}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -168,13 +168,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PlatformController.cs" />
+    <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -238,6 +240,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Game\" />
+    <Folder Include="Views\Platform\" />
+    <Folder Include="Views\Review\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -251,6 +256,20 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CheckPoint.Data\CheckPoint.Data.csproj">
+      <Project>{97f8430c-f700-4624-b3e6-e12c46edb489}</Project>
+      <Name>CheckPoint.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CheckPoint.Models\CheckPoint.Models.csproj">
+      <Project>{ab8f7a3e-5450-4094-a557-f3361362ed56}</Project>
+      <Name>CheckPoint.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CheckPoint.Services\CheckPoint.Services.csproj">
+      <Project>{a94ddb5a-e55e-47a0-9acd-d0912e9f1199}</Project>
+      <Name>CheckPoint.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
