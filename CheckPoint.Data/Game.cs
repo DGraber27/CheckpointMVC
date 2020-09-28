@@ -28,7 +28,7 @@ namespace CheckPoint.Data
         [Required]
         public string Developer { get; set; }
         [Required]
-        public DateTime ReleaseDate { get { return DateTime.Now; } set { } }
+        public DateTime ReleaseDate { get; set; }
         [Required]
         public ESRB ESRB { get; set; }
         public double AverageStarRating { get 

@@ -13,6 +13,6 @@ namespace CheckPoint.Models.GameModels
         public string Platforms { get; set; }
         public string Developer { get; set; }
         public ESRB ESRB { get; set; }
-        public DateTime ReleaseDate { get { return DateTime.Now; } set { } }
+        public DateTime ReleaseDate { get; set; }
     }
 }

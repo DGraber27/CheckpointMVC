@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ namespace CheckPoint.Models.GameModels
         public string Platforms { get; set; }
         public string Developer { get; set; }
         public ESRB ESRB { get; set; }
-        public DateTime ReleaseDate { get { return DateTime.Now; } set { } }
+        public DateTime ReleaseDate { get; set; }
+        [Display(Name = "Average User Score")]
+        public double AverageStarRating { get; }
     }
 }
