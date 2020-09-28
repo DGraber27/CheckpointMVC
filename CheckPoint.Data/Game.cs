@@ -1,12 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CheckPoint.Data
-{
+{ 
+    public enum ESRB { eC, E, E10, T, M, AO, RP, KA}
     public class Game
     {
+        [Key]
+        public int GameId { get; set; }
+        //[ForeignKey(nameof (Review))]
+        //public int ReviewId { get; set; }
+        //public virtual Review Review { get; set; }
+        //[ForeignKey(nameof(Platform))]
+        public int PlatformId { get; set; }
+        public virtual Platform Platform { get; set; }
+        [Required]
+        public string Title { get; set; }
+        [Required]
+        public string Description { get; set; }
+        [Required]
+        public string Platforms { get; set; }
+        [Required]
+        public string Developer { get; set; }
+        [Required]
+        public DateTime ReleaseDate { get { return DateTime.Now; } set { } }
+        [Required]
+        public ESRB ESRB { get; set; }
+        public double AverageStarRating { get 
+            {
+                double totalAverageRating = 0;
+
+                foreach (var rating in AllGameReviews)
+                {
+                    totalAverageRating += rating.StarRating;
+                }
+
+                return (AllGameReviews.Count > 0) ? Math.Round(totalAverageRating / AllGameReviews.Count) : 0;
+            } 
+        }
+        public ICollection<Platform> AllPlatforms { get; set; } = new List<Platform>();
+        public ICollection<Review> AllGameReviews { get; set; } = new List<Review>();
     }
 }
