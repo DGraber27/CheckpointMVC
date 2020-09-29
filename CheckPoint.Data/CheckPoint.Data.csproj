@@ -68,6 +68,10 @@
     <Compile Include="Migrations\202009282029095_ReleaseDate.Designer.cs">
       <DependentUpon>202009282029095_ReleaseDate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009292052268_ReviewGame.cs" />
+    <Compile Include="Migrations\202009292052268_ReviewGame.Designer.cs">
+      <DependentUpon>202009292052268_ReviewGame.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Platform.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -86,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009282029095_ReleaseDate.resx">
       <DependentUpon>202009282029095_ReleaseDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009292052268_ReviewGame.resx">
+      <DependentUpon>202009292052268_ReviewGame.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

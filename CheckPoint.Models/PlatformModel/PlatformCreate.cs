@@ -11,6 +11,6 @@ namespace CheckPoint.Models.PlatformModel
         public string Title { get; set; }
         public string Description { get; set; }
         public string Manufacturor { get; set; }
-        public DateTime ReleaseYear { get { return DateTime.Now; } set { } }
+        public DateTime ReleaseYear { get; set; }
     }
 }

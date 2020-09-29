@@ -13,8 +13,8 @@ namespace CheckPoint.Models.PlatformModel
         public string Title { get; set; }
         public string Description { get; set; }
         public string Manufacturor { get; set; }
-        public DateTime ReleaseYear { get { return DateTime.Now; } set { } }
+        public DateTime ReleaseYear { get; set; }
         [Display(Name = "Average User Score")]
-        public double AverageStarRating { get; }
+        public double AverageStarRating { get; set; }
     }
 }

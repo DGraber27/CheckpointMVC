@@ -23,9 +23,9 @@ namespace CheckPoint.Data
         [ForeignKey(nameof (Game))]
         public int GameId { get; set; }
         public virtual Game Game { get; set; }
-        [ForeignKey(nameof(Platform))]
-        public int PlatformId { get; set; }
-        public virtual Platform Platform { get; set; }
+        //[ForeignKey(nameof(Platform))]
+        //public int PlatformId { get; set; }
+        //public virtual Platform Platform { get; set; }
 
     }
 }

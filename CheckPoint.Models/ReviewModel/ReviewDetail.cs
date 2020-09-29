@@ -10,6 +10,7 @@ namespace CheckPoint.Models.ReviewModel
     public class ReviewDetail
     {
         public int ReviewId { get; set; }
+        public int GameId { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
         [Display (Name = "User Score")]
