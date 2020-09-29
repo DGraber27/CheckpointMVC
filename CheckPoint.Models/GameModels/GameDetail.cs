@@ -17,6 +17,6 @@ namespace CheckPoint.Models.GameModels
         public ESRB ESRB { get; set; }
         public DateTime ReleaseDate { get; set; }
         [Display(Name = "Average User Score")]
-        public double AverageStarRating { get; }
+        public double AverageStarRating { get; set; }
     }
 }

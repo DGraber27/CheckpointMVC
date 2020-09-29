@@ -20,6 +20,6 @@ namespace CheckPoint.Models.GameModels
         [Required]
         public ESRB ESRB { get; set; }
         [Required]
-        public DateTime ReleaseDate { get { return DateTime.Now; } set { } }
+        public DateTime ReleaseDate { get; set; }
     }
 }
