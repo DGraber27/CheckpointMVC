@@ -7,8 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CheckPoint.Data
-{ 
-    public enum ESRB { eC, E, E10, T, M, AO, RP, KA}
+{
+    public enum ESRB { eC, E, E10, T, M, AO, RP, KA }
     public class Game
     {
         [Key]
@@ -17,8 +17,8 @@ namespace CheckPoint.Data
         //public int ReviewId { get; set; }
         //public virtual Review Review { get; set; }
         //[ForeignKey(nameof(Platform))]
-        public int PlatformId { get; set; }
-        public virtual Platform Platform { get; set; }
+        //public int PlatformId { get; set; }
+        //public virtual Platform Platform { get; set; }
         [Required]
         public string Title { get; set; }
         [Required]
@@ -31,19 +31,7 @@ namespace CheckPoint.Data
         public DateTime ReleaseDate { get; set; }
         [Required]
         public ESRB ESRB { get; set; }
-        public double AverageStarRating { get 
-            {
-                double totalAverageRating = 0;
-
-                foreach (var rating in AllGameReviews)
-                {
-                    totalAverageRating += rating.StarRating;
-                }
-
-                return (AllGameReviews.Count > 0) ? Math.Round(totalAverageRating / AllGameReviews.Count) : 0;
-            } 
-        }
-        public ICollection<Platform> AllPlatforms { get; set; } = new List<Platform>();
-        public ICollection<Review> AllGameReviews { get; set; } = new List<Review>();
+      
+        public virtual ICollection<Review> AllGameReviews { get; set; } = new List<Review>();
     }
 }

@@ -1,4 +1,5 @@
-﻿using CheckPoint.Models.PlatformModel;
+﻿using CheckPoint.Data;
+using CheckPoint.Models.PlatformModel;
 using CheckPoint.Models.ReviewModel;
 using System;
 using System.Collections.Generic;
@@ -20,8 +21,25 @@ namespace CheckPoint.Models.GameModels
         public ESRB ESRB { get; set; }
         public DateTime ReleaseDate { get; set; }
         [Display(Name = "Average User Score")]
-        public double AverageStarRating { get;}
+        public double AverageStarRating
+        {
+            get
+            {
+                double totalAverageRating = 0;
+
+                foreach (var starRating in AllGameReviews)
+                {
+                    totalAverageRating += starRating.StarRating;
+                }
+
+                return (AllGameReviews.Count > 0) ? Math.Round(totalAverageRating / AllGameReviews.Count) : 0;
+            }
+        }
+
+        public List<ReviewListItem> AllGameReviews { get; set; }
+
+
         //public List<PlatformDetail> AllPlatforms {get; set;}
-        public List<ReviewDetail> AllGameReviews { get; set; }
+
     }
 }

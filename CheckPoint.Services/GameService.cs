@@ -1,5 +1,6 @@
 ﻿using CheckPoint.Data;
 using CheckPoint.Models.GameModels;
+using CheckPoint.Models.ReviewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace CheckPoint.Services
             var entity =
                 new Game()
                 {
-                    
+
                     Title = model.Title,
                     Description = model.Description,
                     Platforms = model.Platforms,
@@ -43,7 +44,7 @@ namespace CheckPoint.Services
             {
                 var query =
                     ctx
-                    .Games
+                    .Games.ToList()
                     .Select(
                         e =>
                         new GameListItem
@@ -53,38 +54,74 @@ namespace CheckPoint.Services
                             Description = e.Description,
                             Platforms = e.Platforms,
                             Developer = e.Developer,
-                            ESRB = (Models.GameModels.ESRB)e.ESRB,
-                            ReleaseDate = e.ReleaseDate
+                            ESRB = e.ESRB,
+                            ReleaseDate = e.ReleaseDate,
+                            //AverageStarRating = e.AverageStarRating,
+                            AllGameReviews = ConvertDataEntitiesToViewModel(e.AllGameReviews.ToList())
                         }
                         );
-                return query.ToArray();
+              var games = query.ToArray();
+                return games;
             }
         }
-
+        // This method will take in the List<Review> from my Game entity.
+        public List<ReviewListItem> ConvertDataEntitiesToViewModel(List<Review> reviews)
+        {
+        // instantiate a new List<ReviewListItem>**
+            List<ReviewListItem> returnList = new List<ReviewListItem>();
+        // foreach through my entity.AllReviews 
+            foreach (var review in reviews)
+            {
+                //create a new ReviewListItem
+                var reviewListItem = new ReviewListItem();
+                // assign it the values from the entity.AllReviews[i],
+                reviewListItem.ReviewId = review.ReviewId;
+                reviewListItem.Title = review.Title;
+                reviewListItem.Content = review.Content;
+                reviewListItem.StarRating = review.StarRating;
+                reviewListItem.CreatedUtc = review.CreatedUtc;
+               
+                // add ReviewListItem to my List<ReviewListItem>**
+                returnList.Add(reviewListItem);
+            }
+          //  return that List<ReviewListItem>**
+            return returnList;
+        }
         public GameDetail GetGameById(int id)
         {
+            ReviewService reviewService = new ReviewService();
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Games
-                        .Single(e => e.GameId == id);
-                return
-                    new GameDetail
-                    {
-                        GameId = entity.GameId,
-                        Title = entity.Title,
-                        Description = entity.Description,
-                        Platforms = entity.Platforms,
-                        Developer = entity.Developer,
-                        ESRB = (Models.GameModels.ESRB)entity.ESRB,
-                        ReleaseDate = entity.ReleaseDate,
-                        AverageStarRating =entity.AverageStarRating
-                    };
+                        .SingleOrDefault(e => e.GameId == id);
+                var detail = new GameDetail
+                {
+                    GameId = entity.GameId,
+                    Title = entity.Title,
+                    Description = entity.Description,
+                    Platforms = entity.Platforms,
+                    Developer = entity.Developer,
+                    ESRB = (Models.GameModels.ESRB)entity.ESRB,
+                    ReleaseDate = entity.ReleaseDate,
+                    //AverageStarRating = entity.AverageStarRating,
+                    AllGameReviews = ConvertDataEntitiesToViewModel(entity.AllGameReviews.ToList()) /*ConvertDataEntitiesToViewModel(entity.AllGameReviews)*/
+                    //entity.AllGameReviews.Select(e => reviewService.GetReviewById(e.ReviewId)).ToList();
+                };
+                return detail;
+                //foreach (Review review in entity.AllGameReviews)
+                //{
+                //    ReviewListItem reviewListItem = (ReviewListItem)reviewService.GetReview();
+                //    detail.AllGameReviews.Add(reviewListItem);
+                //}
+                //return detail;
             }
         }
 
-        public bool UpdateGame (GameEdit model)
+
+
+        public bool UpdateGame(GameEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -117,5 +154,6 @@ namespace CheckPoint.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
     }
 }

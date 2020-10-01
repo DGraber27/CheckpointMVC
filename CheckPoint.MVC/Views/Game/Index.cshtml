@@ -75,6 +75,11 @@
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.AverageStarRating)
+        @*(@item.AllGameReviews)
+        @{ if (item.AllGameReviews> 0)
+            { double a = item.AverageStarRating / item.AllGameReviews.Count; }
+        }*@
+        
     </td>
     <td>
         @Html.ActionLink("Edit", "Edit", new { id = item.GameId }) |

@@ -11,7 +11,7 @@ namespace CheckPoint.Services
     public class ReviewService
     {
         private readonly Guid _userId;
-
+        public ReviewService() { }
         public ReviewService(Guid userId)
         {
             _userId = userId;
