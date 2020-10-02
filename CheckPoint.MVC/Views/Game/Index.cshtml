@@ -71,7 +71,10 @@
         @Html.DisplayFor(modelItem => item.Developer)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.ReleaseDate)
+        @{ 
+            string releaseDate = item.ReleaseDate.ToString("d");
+        }
+        @Html.DisplayFor(modelItem => releaseDate)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.AverageStarRating)

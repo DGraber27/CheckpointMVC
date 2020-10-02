@@ -25,6 +25,7 @@ namespace CheckPoint.Services
                     Title = model.Title,
                     Content = model.Content,
                     StarRating = model.StarRating,
+                    CreatedUtc = DateTime.UtcNow
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -49,6 +50,7 @@ namespace CheckPoint.Services
                             Title = e.Title,
                             Content = e.Content,
                             StarRating = e.StarRating,
+                            CreatedUtc = e.CreatedUtc
                         }
                         );
                 return query.ToArray();

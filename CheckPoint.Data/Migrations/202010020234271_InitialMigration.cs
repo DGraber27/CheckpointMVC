@@ -3,7 +3,7 @@ namespace CheckPoint.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class InitialMigration : DbMigration
     {
         public override void Up()
         {
@@ -12,7 +12,6 @@ namespace CheckPoint.Data.Migrations
                 c => new
                     {
                         GameId = c.Int(nullable: false, identity: true),
-                        PlatformId = c.Int(nullable: false),
                         Title = c.String(nullable: false),
                         Description = c.String(nullable: false),
                         Platforms = c.String(nullable: false),
@@ -20,13 +19,10 @@ namespace CheckPoint.Data.Migrations
                         ReleaseDate = c.DateTime(nullable: false),
                         ESRB = c.Int(nullable: false),
                         Platform_PlatformId = c.Int(),
-                        Platform_PlatformId1 = c.Int(),
                     })
                 .PrimaryKey(t => t.GameId)
                 .ForeignKey("dbo.Platform", t => t.Platform_PlatformId)
-                .ForeignKey("dbo.Platform", t => t.Platform_PlatformId1)
-                .Index(t => t.Platform_PlatformId)
-                .Index(t => t.Platform_PlatformId1);
+                .Index(t => t.Platform_PlatformId);
             
             CreateTable(
                 "dbo.Review",
@@ -36,16 +32,16 @@ namespace CheckPoint.Data.Migrations
                         Title = c.String(nullable: false),
                         Content = c.String(nullable: false),
                         StarRating = c.Double(nullable: false),
-                        CreatedUtc = c.DateTimeOffset(nullable: false, precision: 7),
+                        CreatedUtc = c.DateTime(nullable: false),
                         AuthorId = c.Guid(nullable: false),
                         GameId = c.Int(nullable: false),
-                        PlatformId = c.Int(nullable: false),
+                        Platform_PlatformId = c.Int(),
                     })
                 .PrimaryKey(t => t.ReviewId)
                 .ForeignKey("dbo.Game", t => t.GameId, cascadeDelete: true)
-                .ForeignKey("dbo.Platform", t => t.PlatformId, cascadeDelete: true)
+                .ForeignKey("dbo.Platform", t => t.Platform_PlatformId)
                 .Index(t => t.GameId)
-                .Index(t => t.PlatformId);
+                .Index(t => t.Platform_PlatformId);
             
             CreateTable(
                 "dbo.Platform",
@@ -56,11 +52,8 @@ namespace CheckPoint.Data.Migrations
                         Description = c.String(nullable: false),
                         Manufacturor = c.String(nullable: false),
                         ReleaseYear = c.DateTime(nullable: false),
-                        Game_GameId = c.Int(),
                     })
-                .PrimaryKey(t => t.PlatformId)
-                .ForeignKey("dbo.Game", t => t.Game_GameId)
-                .Index(t => t.Game_GameId);
+                .PrimaryKey(t => t.PlatformId);
             
             CreateTable(
                 "dbo.IdentityRole",
@@ -140,19 +133,15 @@ namespace CheckPoint.Data.Migrations
             DropForeignKey("dbo.IdentityUserLogin", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserClaim", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
-            DropForeignKey("dbo.Game", "Platform_PlatformId1", "dbo.Platform");
-            DropForeignKey("dbo.Platform", "Game_GameId", "dbo.Game");
-            DropForeignKey("dbo.Review", "PlatformId", "dbo.Platform");
             DropForeignKey("dbo.Game", "Platform_PlatformId", "dbo.Platform");
+            DropForeignKey("dbo.Review", "Platform_PlatformId", "dbo.Platform");
             DropForeignKey("dbo.Review", "GameId", "dbo.Game");
             DropIndex("dbo.IdentityUserLogin", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserClaim", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });
-            DropIndex("dbo.Platform", new[] { "Game_GameId" });
-            DropIndex("dbo.Review", new[] { "PlatformId" });
+            DropIndex("dbo.Review", new[] { "Platform_PlatformId" });
             DropIndex("dbo.Review", new[] { "GameId" });
-            DropIndex("dbo.Game", new[] { "Platform_PlatformId1" });
             DropIndex("dbo.Game", new[] { "Platform_PlatformId" });
             DropTable("dbo.IdentityUserLogin");
             DropTable("dbo.IdentityUserClaim");

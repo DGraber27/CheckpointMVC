@@ -21,5 +21,6 @@ namespace CheckPoint.Models.ReviewModel
         public string Content { get; set; }
         [Display(Name = "User Score")]
         public double StarRating { get; set; }
+        public DateTime CreatedUtc { get; set; }
     }
 }

@@ -56,45 +56,9 @@
   <ItemGroup>
     <Compile Include="Game.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202009281758100_InitialCreate.cs" />
-    <Compile Include="Migrations\202009281758100_InitialCreate.Designer.cs">
-      <DependentUpon>202009281758100_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009281801414_InitialMigration.cs" />
-    <Compile Include="Migrations\202009281801414_InitialMigration.Designer.cs">
-      <DependentUpon>202009281801414_InitialMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009282029095_ReleaseDate.cs" />
-    <Compile Include="Migrations\202009282029095_ReleaseDate.Designer.cs">
-      <DependentUpon>202009282029095_ReleaseDate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009292052268_ReviewGame.cs" />
-    <Compile Include="Migrations\202009292052268_ReviewGame.Designer.cs">
-      <DependentUpon>202009292052268_ReviewGame.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009301353016_GameData.cs" />
-    <Compile Include="Migrations\202009301353016_GameData.Designer.cs">
-      <DependentUpon>202009301353016_GameData.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009301432367_GameDataTwo.cs" />
-    <Compile Include="Migrations\202009301432367_GameDataTwo.Designer.cs">
-      <DependentUpon>202009301432367_GameDataTwo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009301438075_GameDataThree.cs" />
-    <Compile Include="Migrations\202009301438075_GameDataThree.Designer.cs">
-      <DependentUpon>202009301438075_GameDataThree.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009301619072_GameDataFour.cs" />
-    <Compile Include="Migrations\202009301619072_GameDataFour.Designer.cs">
-      <DependentUpon>202009301619072_GameDataFour.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009301810036_GameDataFive.cs" />
-    <Compile Include="Migrations\202009301810036_GameDataFive.Designer.cs">
-      <DependentUpon>202009301810036_GameDataFive.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009301925453_GameDataSix.cs" />
-    <Compile Include="Migrations\202009301925453_GameDataSix.Designer.cs">
-      <DependentUpon>202009301925453_GameDataSix.cs</DependentUpon>
+    <Compile Include="Migrations\202010020234271_InitialMigration.cs" />
+    <Compile Include="Migrations\202010020234271_InitialMigration.Designer.cs">
+      <DependentUpon>202010020234271_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Platform.cs" />
@@ -106,35 +70,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202009281758100_InitialCreate.resx">
-      <DependentUpon>202009281758100_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009281801414_InitialMigration.resx">
-      <DependentUpon>202009281801414_InitialMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009282029095_ReleaseDate.resx">
-      <DependentUpon>202009282029095_ReleaseDate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009292052268_ReviewGame.resx">
-      <DependentUpon>202009292052268_ReviewGame.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009301353016_GameData.resx">
-      <DependentUpon>202009301353016_GameData.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009301432367_GameDataTwo.resx">
-      <DependentUpon>202009301432367_GameDataTwo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009301438075_GameDataThree.resx">
-      <DependentUpon>202009301438075_GameDataThree.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009301619072_GameDataFour.resx">
-      <DependentUpon>202009301619072_GameDataFour.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009301810036_GameDataFive.resx">
-      <DependentUpon>202009301810036_GameDataFive.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009301925453_GameDataSix.resx">
-      <DependentUpon>202009301925453_GameDataSix.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202010020234271_InitialMigration.resx">
+      <DependentUpon>202010020234271_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

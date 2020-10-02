@@ -10,7 +10,6 @@ namespace CheckPoint.Data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "CheckPoint.Data.ApplicationDbContext";
         }
 
         protected override void Seed(CheckPoint.Data.ApplicationDbContext context)

@@ -18,7 +18,7 @@ namespace CheckPoint.Data
         public string Content { get; set; }
         [Required]
         public double StarRating { get; set; }
-        public DateTimeOffset CreatedUtc { get; set; }
+        public DateTime CreatedUtc { get; set; }
         public Guid AuthorId { get; set; }
         [ForeignKey(nameof (Game))]
         public int GameId { get; set; }

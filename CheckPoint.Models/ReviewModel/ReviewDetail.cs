@@ -16,6 +16,6 @@ namespace CheckPoint.Models.ReviewModel
         [Display (Name = "User Score")]
         public double StarRating { get; set; }
         [Display(Name = "Review Posted")]
-        public DateTimeOffset CreatedUtc { get; set; }
+        public DateTime CreatedUtc { get; set; }
     }
 }

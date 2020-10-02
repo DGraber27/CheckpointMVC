@@ -61,7 +61,10 @@
                     @Html.DisplayFor(modelItem => item.StarRating)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.CreatedUtc)
+                    @{
+                        string createdUtc =  item.CreatedUtc.ToString("d");
+                    }
+                    @Html.DisplayFor(modelItem => createdUtc)
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new {  id=item.ReviewId  }) |

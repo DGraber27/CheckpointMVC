@@ -54,7 +54,7 @@ namespace CheckPoint.Services
                             Description = e.Description,
                             Platforms = e.Platforms,
                             Developer = e.Developer,
-                            ESRB = e.ESRB,
+                            ESRB = (Models.GameModels.ESRB)e.ESRB,
                             ReleaseDate = e.ReleaseDate,
                             //AverageStarRating = e.AverageStarRating,
                             AllGameReviews = ConvertDataEntitiesToViewModel(e.AllGameReviews.ToList())
