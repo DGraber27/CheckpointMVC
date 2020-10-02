@@ -23,7 +23,7 @@ namespace CheckPoint.Services
             var entity =
                 new Game()
                 {
-
+                    GameImage = model.GameImage,
                     Title = model.Title,
                     Description = model.Description,
                     Platforms = model.Platforms,
@@ -49,6 +49,7 @@ namespace CheckPoint.Services
                         e =>
                         new GameListItem
                         {
+                            GameImage= e.GameImage,
                             GameId = e.GameId,
                             Title = e.Title,
                             Description = e.Description,
@@ -98,6 +99,7 @@ namespace CheckPoint.Services
                         .SingleOrDefault(e => e.GameId == id);
                 var detail = new GameDetail
                 {
+                    GameImage = entity.GameImage,
                     GameId = entity.GameId,
                     Title = entity.Title,
                     Description = entity.Description,
@@ -135,6 +137,7 @@ namespace CheckPoint.Services
                 entity.Developer = model.Developer;
                 entity.ESRB = (Data.ESRB)model.ESRB;
                 entity.ReleaseDate = model.ReleaseDate;
+                entity.GameImage = model.GameImage;
 
                 return ctx.SaveChanges() == 1;
             }

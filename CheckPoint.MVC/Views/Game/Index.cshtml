@@ -6,7 +6,7 @@
 
 <h2>Index</h2>
 
-<p>
+<p class = "Create">
     @Html.ActionLink("Create New", "Create")
 
 </p>
@@ -53,6 +53,9 @@
     {
 <tr>
     <td>
+        @Html.DisplayFor(modelItem => item.GameImage)
+    </td>
+    <td>
         @Html.DisplayFor(modelItem => item.GameId)
     </td>
     <td>
@@ -71,7 +74,7 @@
         @Html.DisplayFor(modelItem => item.Developer)
     </td>
     <td>
-        @{ 
+        @{
             string releaseDate = item.ReleaseDate.ToString("d");
         }
         @Html.DisplayFor(modelItem => releaseDate)
@@ -79,10 +82,10 @@
     <td>
         @Html.DisplayFor(modelItem => item.AverageStarRating)
         @*(@item.AllGameReviews)
-        @{ if (item.AllGameReviews> 0)
-            { double a = item.AverageStarRating / item.AllGameReviews.Count; }
-        }*@
-        
+            @{ if (item.AllGameReviews> 0)
+                { double a = item.AverageStarRating / item.AllGameReviews.Count; }
+            }*@
+
     </td>
     <td>
         @Html.ActionLink("Edit", "Edit", new { id = item.GameId }) |
@@ -93,3 +96,4 @@
     }
 
 </table>
+

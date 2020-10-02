@@ -34,6 +34,7 @@ namespace CheckPoint.Models.GameModels
                 return (AllGameReviews.Count > 0) ? Math.Round(totalAverageRating / AllGameReviews.Count) : 0;
             }
         }
+        public byte[] GameImage { get; set; }
 
     }
 }

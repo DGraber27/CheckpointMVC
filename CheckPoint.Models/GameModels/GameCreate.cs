@@ -21,5 +21,6 @@ namespace CheckPoint.Models.GameModels
         public ESRB ESRB { get; set; }
         [Required]
         public DateTime ReleaseDate { get; set; }
+        public byte[] GameImage { get; set; }
     }
 }

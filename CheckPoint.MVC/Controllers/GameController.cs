@@ -31,9 +31,13 @@ namespace CheckPoint.MVC.Controllers
             if (!ModelState.IsValid) return View(model);
 
             var service = CreateGameService();
+            //HttpPostedFileBase file = Request.Files["ImageData"];
+            //int i = service.UploadImageInDataBase(file, model);
+
 
             if (service.CreateGame(model))
             {
+
                TempData["SaveResult"] = "Your Game was created.";
                 return RedirectToAction("Index");
             }
