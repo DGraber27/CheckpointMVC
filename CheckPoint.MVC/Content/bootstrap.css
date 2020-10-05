@@ -2902,12 +2902,19 @@ caption {
 
 th {
     text-align: left;
+    background-color: rgba(255, 255, 255, 0.15);
+    font-size: medium;
 }
 
+td {
+    border-top: 1px solid #ebebeb !important;
+    border-bottom: 1px solid #ebebeb !important;
+}
 .table {
     width: 100%;
     max-width: 100%;
     margin-bottom: 21px;
+
 }
 
     .table > thead > tr > th,
@@ -2919,12 +2926,13 @@ th {
         padding: 6px;
         line-height: 1.42857143;
         vertical-align: top;
-        border-top: 1px solid #4e5d6c;
+        border-top: 2px solid #4e5d6c;
     }
 
     .table > thead > tr > th {
         vertical-align: bottom;
         border-bottom: 2px solid #4e5d6c;
+      
     }
 
     .table > caption + thead > tr:first-child > th,
@@ -2954,7 +2962,7 @@ th {
 }
 
 .table-bordered {
-    border: 1px solid #4e5d6c;
+    border: 1px solid #fff;
 }
 
     .table-bordered > thead > tr > th,
@@ -2976,7 +2984,7 @@ th {
 }
 
 .table-hover > tbody > tr:hover {
-    background-color: #485563;
+    background-color: rgba(223, 105, 26, 0.71);
 }
 
 .table > thead > tr > td.active,
@@ -3147,7 +3155,7 @@ th {
             .table-responsive > .table-bordered > tfoot > tr:last-child > th,
             .table-responsive > .table-bordered > tbody > tr:last-child > td,
             .table-responsive > .table-bordered > tfoot > tr:last-child > td {
-                border-bottom: 0;
+                border-bottom: 1px solid;
             }
 }
 
