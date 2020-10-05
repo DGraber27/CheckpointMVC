@@ -29,6 +29,7 @@ namespace CheckPoint.Services
                     Platforms = model.Platforms,
                     Developer = model.Developer,
                     ESRB = (Data.ESRB)model.ESRB,
+                    
                     ReleaseDate = model.ReleaseDate
                 };
 
