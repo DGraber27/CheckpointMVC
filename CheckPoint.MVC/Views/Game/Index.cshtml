@@ -4,13 +4,13 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Games Library</h2>
 
-<p class = "Create">
+<p class="Create">
     @Html.ActionLink("Create New", "Create")
 
 </p>
-    @if (TempData.ContainsKey("SaveResult"))
+@if (TempData.ContainsKey("SaveResult"))
 {
     <div class="alert alert-success fade in" role="alert">
 
@@ -19,7 +19,7 @@
         </button>
         @TempData["SaveResult"]
     </div>
-}   
+}
 <table class="table table-striped table-hover">
     <tr>
         <th>
@@ -51,48 +51,58 @@
 
     @foreach (var item in Model)
     {
-<tr>
-    @*<td>
-        @Html.DisplayFor(modelItem => item.GameImage)
-    </td>*@
-    <td>
-        @Html.DisplayFor(modelItem => item.GameId)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Title)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Description)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ESRB)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Platforms)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Developer)
-    </td>
-    <td>
-        @{
-            string releaseDate = item.ReleaseDate.ToString("d");
-        }
-        @Html.DisplayFor(modelItem => releaseDate)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.AverageStarRating)
-        @*(@item.AllGameReviews)
-            @{ if (item.AllGameReviews> 0)
-                { double a = item.AverageStarRating / item.AllGameReviews.Count; }
-            }*@
+        <tr>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.GameImage)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.GameId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ESRB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Platforms)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Developer)
+            </td>
+            <td>
+                @{
+                    string releaseDate = item.ReleaseDate.ToString("d");
+                }
+                @Html.DisplayFor(modelItem => releaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AverageStarRating)
+                @*(@item.AllGameReviews)
+                    @{ if (item.AllGameReviews> 0)
+                        { double a = item.AverageStarRating / item.AllGameReviews.Count; }
+                    }*@
 
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.GameId }) |
-        @Html.ActionLink("Details", "Details", new { id = item.GameId }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.GameId })
-    </td>
-</tr>
+            </td>
+            <td class="btn-group">
+                <a href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.GameId }) 
+                    </li>
+                    <li>
+                        @Html.ActionLink("Details", "Details", new { id = item.GameId }) 
+                    </li>
+                    <li>
+                        @Html.ActionLink("Delete", "Delete", new { id = item.GameId })
+                    </li>
+                </ul>
+            </td>
+
+        </tr>
     }
 
 </table>

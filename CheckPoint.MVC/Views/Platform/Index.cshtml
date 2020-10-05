@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Platforms</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -63,10 +63,19 @@
             <td>
                 @Html.DisplayFor(modelItem => item.AverageStarRating)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.PlatformId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.PlatformId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.PlatformId })
+            <td class="btn-group">
+                <a href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.PlatformId })
+                    </li>
+                    <li>
+                        @Html.ActionLink("Details", "Details", new { id = item.PlatformId })
+                    </li>
+                    <li>
+                        @Html.ActionLink("Delete", "Delete", new { id = item.PlatformId })
+                    </li>
+                </ul>
             </td>
         </tr>
     }

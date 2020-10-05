@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Reviews</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -19,7 +19,7 @@
         @TempData["SaveResult"]
     </div>
 }
-    <table class="table">
+    <table class="table table-striped table-hover">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.ReviewId)
@@ -44,34 +44,43 @@
 
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ReviewId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.GameId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Content)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StarRating)
-                </td>
-                <td>
-                    @{
-                        string createdUtc =  item.CreatedUtc.ToString("d");
-                    }
-                    @Html.DisplayFor(modelItem => createdUtc)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new {  id=item.ReviewId  }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.ReviewId }) |
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GameId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Content)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StarRating)
+        </td>
+        <td>
+            @{
+                string createdUtc = item.CreatedUtc.ToString("d");
+            }
+            @Html.DisplayFor(modelItem => createdUtc)
+        </td>
+        <td class="btn-group">
+            <a href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ReviewId })
+                </li>
+                <li>
+                    @Html.ActionLink("Details", "Details", new { id = item.ReviewId })
+                </li>
+                <li>
                     @Html.ActionLink("Delete", "Delete", new { id = item.ReviewId })
-                </td>
-            </tr>
+                </li>
+            </ul>
+        </td>
+    </tr>
         }
 
     </table>
