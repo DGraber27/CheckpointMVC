@@ -324,7 +324,7 @@ th {
     src: url("../fonts/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/glyphicons-halflings-regular.woff2") format("woff2"), url("../fonts/glyphicons-halflings-regular.woff") format("woff"), url("../fonts/glyphicons-halflings-regular.ttf") format("truetype"), url("../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg");
 }
 
-.glyphicon {
+/*.glyphicon {
     position: relative;
     top: 1px;
     display: inline-block;
@@ -1384,7 +1384,7 @@ th {
 .glyphicon-menu-up:before {
     content: "\e260";
 }
-
+*/
 * {
     box-sizing: border-box;
 }
@@ -3243,7 +3243,7 @@ output {
     padding: 8px 16px;
     font-size: 15px;
     line-height: 1.42857143;
-    color: #2b3e50;
+    color: #000;
     background-color: #ffffff;
     background-image: none;
     border: 1px solid transparent;
@@ -3259,16 +3259,16 @@ output {
     }
 
     .form-control::-moz-placeholder {
-        color: #cccccc;
+        color: #000;
         opacity: 1;
     }
 
     .form-control:-ms-input-placeholder {
-        color: #cccccc;
+        color: #000;
     }
 
     .form-control::-webkit-input-placeholder {
-        color: #cccccc;
+        color: #000;
     }
 
     .form-control::-ms-expand {
@@ -3280,7 +3280,7 @@ output {
     .form-control[readonly],
     fieldset[disabled] .form-control {
         background-color: #ebebeb;
-        opacity: 1;
+        opacity: 0;
     }
 
     .form-control[disabled],

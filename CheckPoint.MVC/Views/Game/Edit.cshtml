@@ -19,7 +19,7 @@
 
     <div class="form-group">
         @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        <div class="col-md-10" style="color: black;">
             @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
         </div>
@@ -27,29 +27,29 @@
 
     <div class="form-group">
         @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        <div class="col-md-10" style="color: black;">
             @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(model => model.ESRB, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        <div class="col-md-10" style="color: black;">
             @Html.EnumDropDownListFor(model => model.ESRB, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.ESRB, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(model => model.Platforms, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Platforms, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Platforms, "", new { @class = "text-danger" })
+        @Html.LabelFor(model => model.PlatformID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10" style="color: black;">
+            @Html.DropDownList("PlatformID", (IEnumerable<SelectListItem>)ViewBag.Platform, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PlatformID, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.Developer, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        <div class="col-md-10" style="color: black;">
             @Html.EditorFor(model => model.Developer, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Developer, "", new { @class = "text-danger" })
         </div>
@@ -57,7 +57,7 @@
 
     <div class="form-group">
         @Html.LabelFor(model => model.ReleaseDate, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        <div class="col-md-10" style="color: black;">
             @Html.EditorFor(model => model.ReleaseDate, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.ReleaseDate, "", new { @class = "text-danger" })
         </div>

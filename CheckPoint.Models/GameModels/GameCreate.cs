@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CheckPoint.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace CheckPoint.Models.GameModels
         [Required]
         public string Description { get; set; }
         [Required]
-        public string Platforms { get; set; }
+        public int PlatformID { get; set; }
         [Required]
         public string Developer { get; set; }
         [Required]

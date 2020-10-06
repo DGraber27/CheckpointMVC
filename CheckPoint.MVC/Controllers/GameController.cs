@@ -22,6 +22,12 @@ namespace CheckPoint.MVC.Controllers
         }
         public ActionResult Create()
         {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var platformservice = new PlatformService(userId);
+
+            var platfomrID = platformservice.GetPlatform();
+            var platform = new SelectList(platfomrID, "PlatformID", "Title");
+            ViewBag.Platform = platform;
             return View();
         }
         [HttpPost]
@@ -63,6 +69,12 @@ namespace CheckPoint.MVC.Controllers
 
         public ActionResult Edit (int id)
         {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var platformservice = new PlatformService(userId);
+
+            var platfomrID = platformservice.GetPlatform();
+            var platform = new SelectList(platfomrID, "PlatformID", "Title");
+            ViewBag.Platform = platform;
             var service = CreateGameService();
             var detail = service.GetGameById(id);
             var model =
@@ -71,7 +83,7 @@ namespace CheckPoint.MVC.Controllers
                     GameId = detail.GameId,
                     Title = detail.Title,
                     Description = detail.Description,
-                    Platforms = detail.Platforms,
+                    PlatformID = detail.PlatformID,
                     Developer = detail.Developer,
                     ESRB = detail.ESRB,
                     ReleaseDate = detail.ReleaseDate

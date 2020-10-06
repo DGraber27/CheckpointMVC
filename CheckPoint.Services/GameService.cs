@@ -26,7 +26,7 @@ namespace CheckPoint.Services
                     GameImage = model.GameImage,
                     Title = model.Title,
                     Description = model.Description,
-                    Platforms = model.Platforms,
+                    PlatformId = model.PlatformID,
                     Developer = model.Developer,
                     ESRB = (Data.ESRB)model.ESRB,
                     
@@ -54,7 +54,7 @@ namespace CheckPoint.Services
                             GameId = e.GameId,
                             Title = e.Title,
                             Description = e.Description,
-                            Platforms = e.Platforms,
+                            PlatTitle = e.Platform.Title,
                             Developer = e.Developer,
                             ESRB = (Models.GameModels.ESRB)e.ESRB,
                             ReleaseDate = e.ReleaseDate,
@@ -104,7 +104,7 @@ namespace CheckPoint.Services
                     GameId = entity.GameId,
                     Title = entity.Title,
                     Description = entity.Description,
-                    Platforms = entity.Platforms,
+                    PlatTitle = entity.Platform.Title,
                     Developer = entity.Developer,
                     ESRB = (Models.GameModels.ESRB)entity.ESRB,
                     ReleaseDate = entity.ReleaseDate,
@@ -134,7 +134,7 @@ namespace CheckPoint.Services
                     .Single(e => e.GameId == model.GameId);
                 entity.Title = model.Title;
                 entity.Description = model.Description;
-                entity.Platforms = model.Platforms;
+                entity.PlatformId = model.PlatformID;
                 entity.Developer = model.Developer;
                 entity.ESRB = (Data.ESRB)model.ESRB;
                 entity.ReleaseDate = model.ReleaseDate;

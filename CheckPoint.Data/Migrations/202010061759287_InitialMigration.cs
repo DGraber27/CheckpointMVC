@@ -12,17 +12,17 @@ namespace CheckPoint.Data.Migrations
                 c => new
                     {
                         GameId = c.Int(nullable: false, identity: true),
+                        PlatformId = c.Int(nullable: false),
                         Title = c.String(nullable: false),
                         Description = c.String(nullable: false),
-                        Platforms = c.String(nullable: false),
                         Developer = c.String(nullable: false),
                         ReleaseDate = c.DateTime(nullable: false),
                         ESRB = c.Int(nullable: false),
-                        Platform_PlatformId = c.Int(),
+                        GameImage = c.Binary(),
                     })
                 .PrimaryKey(t => t.GameId)
-                .ForeignKey("dbo.Platform", t => t.Platform_PlatformId)
-                .Index(t => t.Platform_PlatformId);
+                .ForeignKey("dbo.Platform", t => t.PlatformId, cascadeDelete: true)
+                .Index(t => t.PlatformId);
             
             CreateTable(
                 "dbo.Review",
@@ -133,7 +133,7 @@ namespace CheckPoint.Data.Migrations
             DropForeignKey("dbo.IdentityUserLogin", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserClaim", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
-            DropForeignKey("dbo.Game", "Platform_PlatformId", "dbo.Platform");
+            DropForeignKey("dbo.Game", "PlatformId", "dbo.Platform");
             DropForeignKey("dbo.Review", "Platform_PlatformId", "dbo.Platform");
             DropForeignKey("dbo.Review", "GameId", "dbo.Game");
             DropIndex("dbo.IdentityUserLogin", new[] { "ApplicationUser_Id" });
@@ -142,7 +142,7 @@ namespace CheckPoint.Data.Migrations
             DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });
             DropIndex("dbo.Review", new[] { "Platform_PlatformId" });
             DropIndex("dbo.Review", new[] { "GameId" });
-            DropIndex("dbo.Game", new[] { "Platform_PlatformId" });
+            DropIndex("dbo.Game", new[] { "PlatformId" });
             DropTable("dbo.IdentityUserLogin");
             DropTable("dbo.IdentityUserClaim");
             DropTable("dbo.ApplicationUser");

@@ -13,7 +13,7 @@ namespace CheckPoint.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202010020234271_InitialMigration"; }
+            get { return "202010061759287_InitialMigration"; }
         }
         
         string IMigrationMetadata.Source

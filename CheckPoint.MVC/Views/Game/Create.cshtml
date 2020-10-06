@@ -33,17 +33,17 @@
     </div>
     <div class="form-group">
         @Html.LabelFor(model => model.ESRB, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        <div class="col-md-10" style="color: black;">
             @Html.EnumDropDownListFor(model => model.ESRB, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.ESRB, "", new { @class = "text-danger" })
         </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Platforms, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Platforms, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Platforms, "", new { @class = "text-danger" })
+    <div class="form-group" >
+        @Html.LabelFor(model => model.PlatformID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10" style="color: black;">
+            @Html.DropDownList("PlatformID", (IEnumerable<SelectListItem>)ViewBag.Platform, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PlatformID, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -95,7 +95,7 @@
             <img src="@imagePath" alt="image" />
 
         </div>*@
-    }
+    
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Create" class="btn btn-default" />
