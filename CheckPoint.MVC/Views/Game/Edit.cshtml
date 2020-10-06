@@ -16,7 +16,13 @@
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.GameId)
-
+    <div class="form-group">
+        @Html.LabelFor(model => model.GameImage, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="ImageData" id="ImageData" onchange="fileCheck(this);" />
+            @*@Html.ValidationMessageFor(model => model.Text, "", new { @class = "t*@ext-danger" })
+        </div>
+    </div>
     <div class="form-group">
         @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10" style="color: black;">

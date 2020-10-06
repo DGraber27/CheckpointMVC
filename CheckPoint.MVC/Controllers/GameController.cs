@@ -1,4 +1,5 @@
-﻿using CheckPoint.Models.GameModels;
+﻿using CheckPoint.Data;
+using CheckPoint.Models.GameModels;
 using CheckPoint.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -12,6 +13,7 @@ namespace CheckPoint.MVC.Controllers
     [Authorize]
     public class GameController : Controller
     {
+        //private readonly ApplicationDbContext _db = new ApplicationDbContext();
         // GET: Game
         public ActionResult Index()
         {
@@ -20,20 +22,47 @@ namespace CheckPoint.MVC.Controllers
             var model = service.GetGames();
             return View(model);
         }
+        //public ActionResult RetrieveImage(int id)
+        //{
+        //    byte[] cover = GetImageFromDB(id);
+        //    if (cover != null)
+        //    {
+        //        return File(cover, "image/jpg");
+        //    }
+        //    else
+        //    {
+        //        return null;
+        //    }
+
+        //}
+
+        //public byte[] GetImageFromDB(int id)
+        //{
+        //    var q = from temp in _db.Games where temp.GameId == id select temp.GameImage;
+        //    byte[] cover = q.First();
+        //    return cover;
+        //}
         public ActionResult Create()
+        {
+           var platformservice = CreatePlatformService();
+
+            var platformID = platformservice.GetPlatform();
+            var platform = new SelectList(platformID, "PlatformID", "Title");
+            ViewBag.Platform = platform;
+            return View();
+        }
+
+        private PlatformService CreatePlatformService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var platformservice = new PlatformService(userId);
-
-            var platfomrID = platformservice.GetPlatform();
-            var platform = new SelectList(platfomrID, "PlatformID", "Title");
-            ViewBag.Platform = platform;
-            return View();
+            return platformservice;
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(GameCreate model)
         {
+            HttpPostedFileBase file = Request.Files["ImageData"];
             if (!ModelState.IsValid) return View(model);
 
             var service = CreateGameService();
@@ -41,7 +70,7 @@ namespace CheckPoint.MVC.Controllers
             //int i = service.UploadImageInDataBase(file, model);
 
 
-            if (service.CreateGame(model))
+            if (service.CreateGame(file, model))
             {
 
                TempData["SaveResult"] = "Your Game was created.";
@@ -55,28 +84,33 @@ namespace CheckPoint.MVC.Controllers
         private GameService CreateGameService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
+            var platformservice = new PlatformService(userId);
+
+            var platformID = platformservice.GetPlatform();
+            var platform = new SelectList(platformID, "PlatformID", "Title");
+            ViewBag.Platform = platform;
             var service = new GameService(userId);
             return service;
         }
 
         public ActionResult Details(int id)
         {
+            
             var svc = CreateGameService();
             var model = svc.GetGameById(id);
 
             return View(model);
         }
-
+        
         public ActionResult Edit (int id)
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var platformservice = new PlatformService(userId);
-
-            var platfomrID = platformservice.GetPlatform();
-            var platform = new SelectList(platfomrID, "PlatformID", "Title");
+            var platformservice = CreatePlatformService();
+            var platformID = platformservice.GetPlatform();
+            var platform = new SelectList(platformID, "PlatformID", "Title");
             ViewBag.Platform = platform;
             var service = CreateGameService();
             var detail = service.GetGameById(id);
+            
             var model =
                 new GameEdit
                 {
@@ -104,8 +138,8 @@ namespace CheckPoint.MVC.Controllers
             }
 
             var service = CreateGameService();
-
-            if (service.UpdateGame(model))
+            HttpPostedFileBase file = Request.Files["ImageData"];
+            if (service.UpdateGame(file, model))
             {
                 TempData["SaveResult"] = "Your game was updated.";
                 return RedirectToAction("Index");

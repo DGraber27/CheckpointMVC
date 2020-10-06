@@ -3,23 +3,27 @@ using CheckPoint.Models.GameModels;
 using CheckPoint.Models.ReviewModel;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace CheckPoint.Services
 {
     public class GameService
     {
         private readonly Guid _userId;
+        private readonly ApplicationDbContext _db = new ApplicationDbContext();
 
         public GameService(Guid userId)
         {
             _userId = userId;
         }
-        public bool CreateGame(GameCreate model)
+        public bool CreateGame(HttpPostedFileBase file, GameCreate model)
         {
+            //model.GameImage = ConvertToBytes(file);
             var entity =
                 new Game()
                 {
@@ -39,6 +43,13 @@ namespace CheckPoint.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+        //public byte[] ConvertToBytes(HttpPostedFileBase image)
+        //{
+        //    byte[] imageBytes = null;
+        //    BinaryReader reader = new BinaryReader(image.InputStream);
+        //    imageBytes = reader.ReadBytes((int)image.ContentLength);
+        //    return imageBytes;
+        //}
         public IEnumerable<GameListItem> GetGames()
         {
             using (var ctx = new ApplicationDbContext())
@@ -124,8 +135,9 @@ namespace CheckPoint.Services
 
 
 
-        public bool UpdateGame(GameEdit model)
+        public bool UpdateGame(HttpPostedFileBase file, GameEdit model)
         {
+                //model.GameImage = ConvertToBytes(file);
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
