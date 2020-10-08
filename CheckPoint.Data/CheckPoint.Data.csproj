@@ -65,6 +65,10 @@
     <Compile Include="Migrations\202010080242080_GameImage.Designer.cs">
       <DependentUpon>202010080242080_GameImage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010082043547_GameIdNullReview.cs" />
+    <Compile Include="Migrations\202010082043547_GameIdNullReview.Designer.cs">
+      <DependentUpon>202010082043547_GameIdNullReview.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Platform.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,6 +84,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010080242080_GameImage.resx">
       <DependentUpon>202010080242080_GameImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010082043547_GameIdNullReview.resx">
+      <DependentUpon>202010082043547_GameIdNullReview.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

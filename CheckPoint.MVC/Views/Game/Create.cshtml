@@ -15,13 +15,6 @@
     <div class="form-horizontal">
         <h4>GameCreate</h4>
         <hr />
-        <!--<div class="form-group">
-            @Html.LabelFor(model => model.GameImage, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input type="file" name="ImageData" id="ImageData" onchange="fileCheck(this);" />-->
-        @*@Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })*@
-        <!--</div>
-        </div>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })-->
         <div class="form-group">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -50,7 +43,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.PlatformID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10" style="color: black;">
-                @Html.DropDownList("PlatformID", (IEnumerable<SelectListItem>)ViewBag.Platform, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("PlatFormID", (IEnumerable<SelectListItem>)ViewBag.Platform, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PlatformID, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -70,8 +63,6 @@
                 @Html.ValidationMessageFor(model => model.ReleaseDate, "", new { @class = "text-danger" })
             </div>
         </div>
-        <legend> Upload Game Image </legend>
-        <input type="file" name="ImageData" id="ImageData" onchange="fileCheck(this);" />
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

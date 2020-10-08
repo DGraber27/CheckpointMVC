@@ -11,14 +11,20 @@ namespace CheckPoint.Models.GameModels
 {
     public class GameDetail
     {
+        [Display(Name = "Game ID")]
         public int GameId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+        [Display(Name = "Platform")]
         public int PlatformID { get; set; }
+        [Display(Name = "Platform")]
         public string PlatTitle { get; set; }
         public string Developer { get; set; }
+        [Display(Name = "Maturity Rating")]
         public ESRB ESRB { get; set; }
+        [Display(Name = "Release Date")]
         public DateTime ReleaseDate { get; set; }
+        [Display(Name = "Reviews")]
         public List<ReviewListItem> AllGameReviews { get; set; }
         public List<GameImageListItems> AllGameImages { get; set; }
         [Display(Name = "Average User Score")]

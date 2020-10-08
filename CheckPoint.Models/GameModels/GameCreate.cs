@@ -17,12 +17,15 @@ namespace CheckPoint.Models.GameModels
         [AllowHtml]
         public string Description { get; set; }
         [Required]
+        [Display(Name = "Platform")]
         public int PlatformID { get; set; }
         [Required]
         public string Developer { get; set; }
         [Required]
+        [Display (Name = "Maturity Rating")]
         public ESRB ESRB { get; set; }
         [Required]
+        [Display(Name = "Release Date")]
         public DateTime ReleaseDate { get; set; }
         public byte[] GameImage { get; set; }
     }

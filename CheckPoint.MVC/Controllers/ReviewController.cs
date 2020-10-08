@@ -21,6 +21,10 @@ namespace CheckPoint.MVC.Controllers
         }
         public ActionResult Create()
         {
+            var gameService = CreateGameService();
+            var gameID = gameService.GetGames();
+            var game = new SelectList(gameID, "GameID", "Title");
+            ViewBag.Game = game;
             return View();
         }
         [HttpPost]
@@ -40,10 +44,20 @@ namespace CheckPoint.MVC.Controllers
 
             return View(model);
         }
-
-        private ReviewService CreateReviewService()
+        private GameService CreateGameService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
+            var gameservice = new GameService(userId);
+            return gameservice; 
+        }
+            private ReviewService CreateReviewService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var gameService = new GameService(userId);
+
+            var gameID = gameService.GetGames();
+            var game = new SelectList(gameID, "GameID", "Title");
+            ViewBag.Game = game;
             var service = new ReviewService(userId);
             return service;
         }
@@ -58,6 +72,10 @@ namespace CheckPoint.MVC.Controllers
 
         public ActionResult Edit(int id)
         {
+            var gameService = CreateGameService();
+            var gameID = gameService.GetGames();
+            var game = new SelectList(gameID, "GameID", "Title");
+            ViewBag.Game = game;
             var service = CreateReviewService();
             var detail = service.GetReviewById(id);
             var model =

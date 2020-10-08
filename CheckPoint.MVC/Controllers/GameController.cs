@@ -63,11 +63,6 @@ namespace CheckPoint.MVC.Controllers
         private GameService CreateGameService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var platformservice = new PlatformService(userId);
-
-            var platformID = platformservice.GetPlatform();
-            var platform = new SelectList(platformID, "PlatformID", "Title");
-            ViewBag.Platform = platform;
             var service = new GameService(userId);
             return service;
         }
@@ -92,7 +87,7 @@ namespace CheckPoint.MVC.Controllers
             var model =
                 new GameEdit
                 {
-                    GameId = detail.GameId,
+                    
                     Title = detail.Title,
                     Description = detail.Description,
                     PlatformID = detail.PlatformID,

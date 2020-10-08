@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace CheckPoint.Services
 {
@@ -46,7 +47,7 @@ namespace CheckPoint.Services
                         new ReviewListItem
                         {
                             ReviewId = e.ReviewId,
-                            GameId = e.GameId,
+                            GameTitle = e.Game.Title,
                             Title = e.Title,
                             Content = e.Content,
                             StarRating = e.StarRating,
@@ -69,7 +70,7 @@ namespace CheckPoint.Services
                     new ReviewDetail
                     {
                         ReviewId = entity.ReviewId,
-                        GameId = entity.GameId,
+                        GameTitle = entity.Game.Title,
                         Title = entity.Title,
                         Content = entity.Content,
                         StarRating = entity.StarRating
