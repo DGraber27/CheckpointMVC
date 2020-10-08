@@ -1,24 +1,9 @@
 ﻿
-.navbar-brand {
-    color: orangered !important;
-}
-
-    .navbar-brand:visited {
-        color: orangered !important;
-    }
-
-
-
-.navbar-inverse {
-    color: orangered !important;
-}
 body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
-#ESRB {
-    color: black !important;
-}
+
 
 /* Set padding to keep content from hitting the edges */
 .body-content {

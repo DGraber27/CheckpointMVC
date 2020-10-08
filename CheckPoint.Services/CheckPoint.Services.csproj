@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameImageService.cs" />
     <Compile Include="GameService.cs" />
     <Compile Include="PlatformService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

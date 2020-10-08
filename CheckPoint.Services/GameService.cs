@@ -15,19 +15,19 @@ namespace CheckPoint.Services
     public class GameService
     {
         private readonly Guid _userId;
-        private readonly ApplicationDbContext _db = new ApplicationDbContext();
+
 
         public GameService(Guid userId)
         {
             _userId = userId;
         }
-        public bool CreateGame(HttpPostedFileBase file, GameCreate model)
+        public bool CreateGame( GameCreate model)
         {
             //model.GameImage = ConvertToBytes(file);
             var entity =
                 new Game()
                 {
-                    GameImage = model.GameImage,
+                    /*GameImage = model.GameImage,*/
                     Title = model.Title,
                     Description = model.Description,
                     PlatformId = model.PlatformID,
@@ -43,6 +43,7 @@ namespace CheckPoint.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+        
         //public byte[] ConvertToBytes(HttpPostedFileBase image)
         //{
         //    byte[] imageBytes = null;
@@ -61,7 +62,7 @@ namespace CheckPoint.Services
                         e =>
                         new GameListItem
                         {
-                            GameImage= e.GameImage,
+                            //GameImage= e.GameImage,
                             GameId = e.GameId,
                             Title = e.Title,
                             Description = e.Description,
@@ -111,7 +112,7 @@ namespace CheckPoint.Services
                         .SingleOrDefault(e => e.GameId == id);
                 var detail = new GameDetail
                 {
-                    GameImage = entity.GameImage,
+                    //GameImage = entity.GameImage,
                     GameId = entity.GameId,
                     Title = entity.Title,
                     Description = entity.Description,
@@ -150,7 +151,7 @@ namespace CheckPoint.Services
                 entity.Developer = model.Developer;
                 entity.ESRB = (Data.ESRB)model.ESRB;
                 entity.ReleaseDate = model.ReleaseDate;
-                entity.GameImage = model.GameImage;
+             
 
                 return ctx.SaveChanges() == 1;
             }

@@ -31,7 +31,9 @@ namespace CheckPoint.Data
         public DateTime ReleaseDate { get; set; }
         [Required]
         public ESRB ESRB { get; set; }
-      public byte[] GameImage { get; set; }
+      //public byte[] GameImage { get; set; }
         public virtual ICollection<Review> AllGameReviews { get; set; } = new List<Review>();
+
+        public virtual ICollection<GameImage> AllGameImages { get; set; } = new List<GameImage>();
     }
 }

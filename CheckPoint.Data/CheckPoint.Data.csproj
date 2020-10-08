@@ -55,10 +55,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Game.cs" />
+    <Compile Include="GameImage.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Migrations\202010061759287_InitialMigration.cs" />
     <Compile Include="Migrations\202010061759287_InitialMigration.Designer.cs">
       <DependentUpon>202010061759287_InitialMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010080242080_GameImage.cs" />
+    <Compile Include="Migrations\202010080242080_GameImage.Designer.cs">
+      <DependentUpon>202010080242080_GameImage.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Platform.cs" />
@@ -72,6 +77,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202010061759287_InitialMigration.resx">
       <DependentUpon>202010061759287_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010080242080_GameImage.resx">
+      <DependentUpon>202010080242080_GameImage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
