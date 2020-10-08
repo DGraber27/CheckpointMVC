@@ -39,7 +39,7 @@ namespace CheckPoint.Models.GameModels
         public byte[] GameImage { get; set; }
         public List<ReviewListItem> AllGameReviews { get; set; }
 
-
+        public List<GameImageListItems> AllGameImages { get; set; }
         //public List<PlatformDetail> AllPlatforms {get; set;}
 
     }

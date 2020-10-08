@@ -98,7 +98,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <button type="button" class="btn btn-success" id="btnAddImages">Add Images</button>
-                        @*@Html.ActionLink("_AddGameImages", "ImageCreate", new { id = item.GameId })*@
+                        
                     </div>
                 </div>
             </td>
@@ -119,10 +119,10 @@
         </div>
     </div>
 </div>
-<script>
+@*<script>
     var imgId = null;
     $("#btnAddImages").click(function () {
         $("#addImagesModal").modal("show");
         $("#imagesDiv").load("/Game/GetGameImages/" + @ViewBag.GameId)
     });
-</script>
+</script>*@

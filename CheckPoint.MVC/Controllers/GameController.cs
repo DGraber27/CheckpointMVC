@@ -160,10 +160,11 @@ namespace CheckPoint.MVC.Controllers
         public ActionResult GetGameImages(int id)
         {
             GameImageListItems gameImages = new GameImageListItems(id);
-            return PartialView("_AddGameImages", gameImages);
+            return PartialView("Create_Image", gameImages);
 
         }
-        [ActionName("ImageCreate")]
+        [HttpPost]
+        [ActionName("Create_Image")]
         public ActionResult AddGameImages(GameImageListItems imageCreate)
         {
             var gameImageCreate = new GameImageListItems();

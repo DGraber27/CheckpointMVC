@@ -20,6 +20,7 @@ namespace CheckPoint.Models.GameModels
         public ESRB ESRB { get; set; }
         public DateTime ReleaseDate { get; set; }
         public List<ReviewListItem> AllGameReviews { get; set; }
+        public List<GameImageListItems> AllGameImages { get; set; }
         [Display(Name = "Average User Score")]
         public double AverageStarRating
         {

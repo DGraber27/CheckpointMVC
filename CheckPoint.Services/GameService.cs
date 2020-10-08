@@ -62,7 +62,7 @@ namespace CheckPoint.Services
                         e =>
                         new GameListItem
                         {
-                            //GameImage= e.GameImage,
+                            AllGameImages = ConvertDataEntitiesToImageViewModel(e.AllGameImages.ToList()),
                             GameId = e.GameId,
                             Title = e.Title,
                             Description = e.Description,
@@ -101,6 +101,28 @@ namespace CheckPoint.Services
           //  return that List<ReviewListItem>**
             return returnList;
         }
+        public List<GameImageListItems> ConvertDataEntitiesToImageViewModel(List<GameImage> images)
+        {
+            // instantiate a new List<ReviewListItem>**
+            List<GameImageListItems> returnList = new List<GameImageListItems>();
+            // foreach through my entity.AllReviews 
+            foreach (var image in images)
+            {
+                //create a new ReviewListItem
+                var gameImageListItem = new GameImageListItems();
+                // assign it the values from the entity.AllReviews[i],
+                gameImageListItem.GameImageId = image.GameImageID;
+                gameImageListItem.FileContent = image.FileContent;
+                gameImageListItem.FileName = image.FileName;
+                gameImageListItem.FileType = image.FileType;
+                gameImageListItem.FileSize = image.FileSize;
+
+                // add ReviewListItem to my List<ReviewListItem>**
+                returnList.Add(gameImageListItem);
+            }
+            //  return that List<ReviewListItem>**
+            return returnList;
+        }
         public GameDetail GetGameById(int id)
         {
             ReviewService reviewService = new ReviewService();
@@ -112,7 +134,7 @@ namespace CheckPoint.Services
                         .SingleOrDefault(e => e.GameId == id);
                 var detail = new GameDetail
                 {
-                    //GameImage = entity.GameImage,
+                    AllGameImages = ConvertDataEntitiesToImageViewModel(entity.AllGameImages.ToList()),
                     GameId = entity.GameId,
                     Title = entity.Title,
                     Description = entity.Description,
@@ -121,8 +143,7 @@ namespace CheckPoint.Services
                     ESRB = (Models.GameModels.ESRB)entity.ESRB,
                     ReleaseDate = entity.ReleaseDate,
                     //AverageStarRating = entity.AverageStarRating,
-                    AllGameReviews = ConvertDataEntitiesToViewModel(entity.AllGameReviews.ToList()) /*ConvertDataEntitiesToViewModel(entity.AllGameReviews)*/
-                    //entity.AllGameReviews.Select(e => reviewService.GetReviewById(e.ReviewId)).ToList();
+                    AllGameReviews = ConvertDataEntitiesToViewModel(entity.AllGameReviews.ToList()) 
                 };
                 return detail;
                 //foreach (Review review in entity.AllGameReviews)

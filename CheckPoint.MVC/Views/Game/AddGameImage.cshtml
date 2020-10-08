@@ -1,6 +1,7 @@
 ﻿@model CheckPoint.Models.GameModels.GameImageCreate
 
-<form method="post" action="@Url.Action("AddGameImages")" enctype="multipart/form-data">
+<form method="post" action="@Url.Action("Create_Image")" enctype="multipart/form-data">
+    <input type="file" name="ImageData" id="ImageData" onchange="fileCheck(this);" />
     <div class="row">
         <div class="col-md-12">
             @Html.AntiForgeryToken()

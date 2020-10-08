@@ -55,7 +55,11 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ReleaseDate)
+                @{
+                    string releaseDate = Model.ReleaseDate.ToString("d");
+                }
+                @Html.DisplayFor(modelItem => releaseDate)
+            
         </dd>
 
         <dt>
@@ -67,8 +71,47 @@
         </dd>
 
     </dl>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.GameId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.GameId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div>
+
+    <div class=" col-md-12 " style="font-size:x-large; position: center;">
+        <h2>
+
+        @Html.DisplayNameFor(model => model.AllGameReviews)
+        </h2>
+
+    </div>
+    @foreach (var review in Model.AllGameReviews)
+    {
+
+        <div class=" col-md-6 dl-horizontal" style=" border: 1px solid white; margin-bottom: 1em;">
+
+            <div class="col-md-12" style="font-size: large; font-weight: 700; color: #df691A; position: center;">
+                @Html.DisplayFor(modelitem => review.Title)
+            </div>
+            <div class="review-content col-md-12" style="color: #4cff00">
+                @Html.DisplayFor(modelitem => review.StarRating)
+            </div>
+            <div class="review-content col-md-12">
+                @Html.DisplayFor(modelitem => review.Content)
+            </div>
+
+            <div class="review-content col-md-12">
+                @Html.DisplayFor(modelitem => review.CreatedUtc)
+            </div>
+
+        </div>
+
+    }
+</div>
+    <br />
+    <style>
+        .review-content {
+            font-size: medium;
+            padding: .5em;
+        }
+    </style>
