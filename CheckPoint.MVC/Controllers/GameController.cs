@@ -89,7 +89,6 @@ namespace CheckPoint.MVC.Controllers
             ViewBag.Platform = platform;
             var service = CreateGameService();
             var detail = service.GetGameById(id);
-
             var model =
                 new GameEdit
                 {
@@ -192,7 +191,7 @@ namespace CheckPoint.MVC.Controllers
         public ActionResult DeleteGameImage(int id)
         {
             var service = CreateGameImageService();
-
+  
             service.DeleteGameImage(id);
 
             TempData["SaveResult"] = "Your note was deleted";

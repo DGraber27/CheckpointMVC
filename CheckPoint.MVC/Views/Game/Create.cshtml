@@ -70,23 +70,6 @@
                 @Html.ValidationMessageFor(model => model.ReleaseDate, "", new { @class = "text-danger" })
             </div>
         </div>
-        @*@{ WebImage photo = null;
-                var newFileName = "";
-                var imagePath = "";
-
-                if (IsPost)
-                {
-                    photo = WebImage.GetImageFromRequest();
-                    if (photo != null)
-                    {
-                        newFileName = Guid.NewGuid().ToString() + "_" +
-                            Path.GetFileName(photo.FileName);
-                        imagePath = @"Assets\" + newFileName;
-
-                        photo.Save(@"~\" + imagePath);
-                    }
-                }
-            }*@
         <legend> Upload Game Image </legend>
         <input type="file" name="ImageData" id="ImageData" onchange="fileCheck(this);" />
 
