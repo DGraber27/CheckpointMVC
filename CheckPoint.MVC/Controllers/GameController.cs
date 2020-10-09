@@ -87,7 +87,7 @@ namespace CheckPoint.MVC.Controllers
             var model =
                 new GameEdit
                 {
-                    
+                    GameId = detail.GameId,
                     Title = detail.Title,
                     Description = detail.Description,
                     PlatformID = detail.PlatformID,
@@ -100,24 +100,30 @@ namespace CheckPoint.MVC.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, GameEdit model)
+        public ActionResult Edit(GameEdit model)
         {
-            if (!ModelState.IsValid) return View(model);
-
-            if (model.GameId != id)
+            if (ModelState.IsValid)
             {
-                ModelState.AddModelError("", "Id Mismatch");
-                return View(model);
-            }
 
-            var service = CreateGameService();
-            HttpPostedFileBase file = Request.Files["ImageData"];
-            if (service.UpdateGame(file, model))
-            {
-                TempData["SaveResult"] = "Your game was updated.";
-                return RedirectToAction("Index");
-            }
+                //if (model.GameId != id)
+                //{
+                //    ModelState.AddModelError("", "Id Mismatch");
+                //    return View(model);
+                //}
 
+                //var platformservice = CreatePlatformService();
+                //var platformID = platformservice.GetPlatform();
+                //var platform = new SelectList(platformID, "PlatformID", "Title");
+                //ViewBag.Platform = platform;
+                var service = CreateGameService();
+                //HttpPostedFileBase file = Request.Files["ImageData"];
+                if (service.UpdateGame(model))
+                {
+                    TempData["SaveResult"] = "Your game was updated.";
+                    return RedirectToAction("Index");
+                }
+
+            }
             ModelState.AddModelError("", "Your game could not be updated.");
             return View(model);
         }
@@ -186,7 +192,7 @@ namespace CheckPoint.MVC.Controllers
         public ActionResult DeleteGameImage(int id)
         {
             var service = CreateGameImageService();
-  
+
             service.DeleteGameImage(id);
 
             TempData["SaveResult"] = "Your note was deleted";

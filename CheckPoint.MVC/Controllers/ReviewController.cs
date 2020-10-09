@@ -81,6 +81,7 @@ namespace CheckPoint.MVC.Controllers
             var model =
                 new ReviewEdit
                 {
+                    ReviewId = detail.ReviewId,
                     GameId = detail.GameId,
                     Title = detail.Title,
                     Content = detail.Content,

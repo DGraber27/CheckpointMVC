@@ -138,6 +138,7 @@ namespace CheckPoint.Services
                     GameId = entity.GameId,
                     Title = entity.Title,
                     Description = entity.Description,
+                    PlatformID = entity.PlatformId,
                     PlatTitle = entity.Platform.Title,
                     Developer = entity.Developer,
                     ESRB = (Models.GameModels.ESRB)entity.ESRB,
@@ -157,7 +158,7 @@ namespace CheckPoint.Services
 
 
 
-        public bool UpdateGame(HttpPostedFileBase file, GameEdit model)
+        public bool UpdateGame(GameEdit model)
         {
                 //model.GameImage = ConvertToBytes(file);
             using (var ctx = new ApplicationDbContext())
@@ -165,16 +166,20 @@ namespace CheckPoint.Services
                 var entity =
                     ctx
                     .Games
-                    .Single(e => e.GameId == model.GameId);
+                   .Where(e => e.GameId == model.GameId).FirstOrDefault();
+                //.Single(e => e.GameId == model.GameId);
+                if (entity != null)
+                {
+
                 entity.Title = model.Title;
                 entity.Description = model.Description;
                 entity.PlatformId = model.PlatformID;
                 entity.Developer = model.Developer;
                 entity.ESRB = (Data.ESRB)model.ESRB;
                 entity.ReleaseDate = model.ReleaseDate;
-             
-
                 return ctx.SaveChanges() == 1;
+                }
+                return false;
             }
         }
 
@@ -185,7 +190,7 @@ namespace CheckPoint.Services
                 var entity =
                     ctx
                         .Games
-                        .Single(e => e.GameId == gameId);
+                        .Where(e => e.GameId == gameId).FirstOrDefault();
 
                 ctx.Games.Remove(entity);
 
