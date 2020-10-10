@@ -27,6 +27,7 @@ namespace CheckPoint.Models.GameModels
         [Required]
         [Display(Name = "Release Date")]
         public DateTime ReleaseDate { get; set; }
+        [Display(Name = "Game Image")]
         public byte[] GameImage { get; set; }
     }
 }

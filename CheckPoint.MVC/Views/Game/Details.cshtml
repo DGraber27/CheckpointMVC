@@ -9,8 +9,14 @@
 <div>
     <h4></h4>
     <hr />
-    <dl class="dl-horizontal" style="font-size: large; text-shadow: 2px 2px 2px #000000 !important;
-">
+    <dl class="dl-horizontal" style="font-size: large; text-shadow: 2px 2px 2px #000000 !important;">
+        @*<dt>
+            @Html.DisplayNameFor(model => model.GameImage)
+        </dt>*@
+
+        <dd>
+            <img src="/Game/RetrieveImage/@Model.GameId" alt="" height=250 width=200 />
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.GameId)
         </dt>
@@ -56,11 +62,11 @@
         </dt>
 
         <dd>
-                @{
-                    string releaseDate = Model.ReleaseDate.ToString("d");
-                }
-                @Html.DisplayFor(modelItem => releaseDate)
-            
+            @{
+                string releaseDate = Model.ReleaseDate.ToString("d");
+            }
+            @Html.DisplayFor(modelItem => releaseDate)
+
         </dd>
 
         <dt>

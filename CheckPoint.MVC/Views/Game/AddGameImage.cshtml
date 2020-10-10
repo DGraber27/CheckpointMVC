@@ -1,4 +1,4 @@
-﻿@model CheckPoint.Models.GameModels.GameImageCreate
+﻿@*@model CheckPoint.Models.GameModels.GameImageCreate
 
 <form method="post" action="@Url.Action("Create_Image")" enctype="multipart/form-data">
     <input type="file" name="ImageData" id="ImageData" onchange="fileCheck(this);" />
@@ -32,4 +32,4 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-}
+}*@

@@ -54,10 +54,14 @@
     {
         <tr>
             <td>
-                @if (item.GameImage != null)
-                {
+                @*@if (item.GameImage != null)
+                { }*@
                     <img src="/Game/RetrieveImage/@item.GameId" alt="" height=250 width=200 />
-                }
+                
+                @*else if (item.GameImage == null)
+                {
+                    <img src="~/Assets/image-placeholder.jpg" alt="" height=250 width=200 />
+                }*@
             </td>
             <td style="font-size: large">
                 @Html.DisplayFor(modelItem => item.GameId)
@@ -71,6 +75,7 @@
             <td style="font-size: large">
                 @Html.DisplayFor(modelItem => item.ESRB)
             </td>
+            
             @*<td>
                     @Html.DisplayFor(modelItem => item.PlatTitle)
                 </td>
@@ -83,6 +88,8 @@
                     }
                     @Html.DisplayFor(modelItem => releaseDate)
                 </td>*@
+
+           
             <td class="btn-group" style="border: 0 !important; margin-top: .5em;">
                 <a href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
                 <ul class="dropdown-menu">
@@ -96,18 +103,18 @@
                         @Html.ActionLink("Delete", "Delete", new { id = item.GameId })
                     </li>
                 </ul>
-                <div class="row">
+                @*<div class="row">
                     <div class="col-md-12">
                         <button type="button" class="btn btn-success" id="btnAddImages">Add Images</button>
-                        
+                        @Html.ActionLink("Add Image", "Create_Image", new { id = item.GameId})
                     </div>
-                </div>
+                </div>*@
             </td>
             
         </tr>
     }
 </table>
-<div class="modal fade" id="addImagesModal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+@*<div class="modal fade" id="addImagesModal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -119,7 +126,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 @*<script>
     var imgId = null;
     $("#btnAddImages").click(function () {

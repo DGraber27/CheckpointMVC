@@ -24,9 +24,10 @@ namespace CheckPoint.Models.GameModels
         public ESRB ESRB { get; set; }
         [Display(Name = "Release Date")]
         public DateTime ReleaseDate { get; set; }
+        [Display(Name = "Game Image")]
+        public byte[] GameImage { get; set; }
         [Display(Name = "Reviews")]
-        public List<ReviewListItem> AllGameReviews { get; set; }
-        public List<GameImageListItems> AllGameImages { get; set; }
+        public virtual List<ReviewListItem> AllGameReviews { get; set; }
         [Display(Name = "Average User Score")]
         public double AverageStarRating
         {
@@ -42,7 +43,7 @@ namespace CheckPoint.Models.GameModels
                 return (AllGameReviews.Count > 0) ? Math.Round(totalAverageRating / AllGameReviews.Count) : 0;
             }
         }
-        public byte[] GameImage { get; set; }
 
+        //public List<GameImageListItems> AllGameImages { get; set; }
     }
 }

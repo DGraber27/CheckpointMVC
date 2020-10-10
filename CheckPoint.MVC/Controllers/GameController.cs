@@ -24,12 +24,26 @@ namespace CheckPoint.MVC.Controllers
             return View(model);
         }
 
+        public ActionResult RetrieveImage(int id)
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new GameService(userId);
+            byte[] cover = service.GetImageFromDB(id);
+            if (cover != null)
+            {
+                return File(cover, "image/jpg");
+            }
+            else
+            {
+                return null;
+            }
+        }
         public ActionResult Create()
         {
             var platformservice = CreatePlatformService();
 
-            var platformID = platformservice.GetPlatform();
-            var platform = new SelectList(platformID, "PlatformID", "Title");
+            var platforms = platformservice.GetPlatform();
+            var platform = new SelectList(platforms, "PlatformID", "Title");
             ViewBag.Platform = platform;
             return View();
         }
@@ -44,12 +58,13 @@ namespace CheckPoint.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(GameCreate model)
         {
+            HttpPostedFileBase file = Request.Files["ImageData"];
             if (!ModelState.IsValid) return View(model);
 
             var service = CreateGameService();
 
 
-            if (service.CreateGame(model))
+            if (service.CreateGame(file, model))
             {
 
                 TempData["SaveResult"] = "Your Game was created.";
@@ -79,8 +94,8 @@ namespace CheckPoint.MVC.Controllers
         public ActionResult Edit(int id)
         {
             var platformservice = CreatePlatformService();
-            var platformID = platformservice.GetPlatform();
-            var platform = new SelectList(platformID, "PlatformID", "Title");
+            var platforms = platformservice.GetPlatform();
+            var platform = new SelectList(platforms, "PlatformID", "Title");
             ViewBag.Platform = platform;
             var service = CreateGameService();
             var detail = service.GetGameById(id);
@@ -100,24 +115,24 @@ namespace CheckPoint.MVC.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(GameEdit model)
+        public ActionResult Edit(int id, GameEdit model)
         {
+            HttpPostedFileBase file = Request.Files["ImageData"];
             if (ModelState.IsValid)
             {
 
-                //if (model.GameId != id)
-                //{
-                //    ModelState.AddModelError("", "Id Mismatch");
-                //    return View(model);
-                //}
+                if (model.GameId != id)
+                {
+                    ModelState.AddModelError("", "Id Mismatch");
+                    return View(model);
+                }
 
                 //var platformservice = CreatePlatformService();
                 //var platformID = platformservice.GetPlatform();
                 //var platform = new SelectList(platformID, "PlatformID", "Title");
                 //ViewBag.Platform = platform;
                 var service = CreateGameService();
-                //HttpPostedFileBase file = Request.Files["ImageData"];
-                if (service.UpdateGame(model))
+                if (service.UpdateGame(file, model))
                 {
                     TempData["SaveResult"] = "Your game was updated.";
                     return RedirectToAction("Index");
@@ -150,54 +165,54 @@ namespace CheckPoint.MVC.Controllers
 
             return RedirectToAction("Index");
         }
-        private GameImageService CreateGameImageService()
-        {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var gameImageservice = new GameImageService(userId);
-            return gameImageservice;
-        }
+        //private GameImageService CreateGameImageService()
+        //{
+        //    var userId = Guid.Parse(User.Identity.GetUserId());
+        //    var gameImageservice = new GameImageService(userId);
+        //    return gameImageservice;
+        //}
 
-        public ActionResult GetGameImages(int id)
-        {
-            GameImageListItems gameImages = new GameImageListItems(id);
-            return PartialView("Create_Image", gameImages);
+        //public ActionResult GetGameImages(int id)
+        //{
+        //    GameImageListItems gameImages = new GameImageListItems(id);
+        //    return View("Create_Image", gameImages);
 
-        }
-        [HttpPost]
-        [ActionName("Create_Image")]
-        public ActionResult AddGameImages(GameImageListItems imageCreate)
-        {
-            var gameImageCreate = new GameImageListItems();
-            var service = CreateGameImageService();
-            var images = imageCreate.MapToModel();
-            for (int i = 0; i < images.Count(); i++)
-            {
-                //images.ElementAt(i).CreateDate = DateTime.Now;
-                //images.ElementAt(i).CreateUserId = User.Identity.GetUserId<int>();
-                //images.ElementAt(i).UpdateDate = DateTime.Now;
-                service.CreateGameImage(imageCreate);
-            }
-            return RedirectToAction("GameImages", new { id = gameImageCreate.GameId });
-        }
-        [HttpPost]
-        public FileResult GetGameImage(int id)
-        {
-            GameImageListItems img = CreateGameImageService().GetGameImageById(id);
-            return File(img.FileContent, img.FileType, img.FileName);
-        }
+        //}
+        //[HttpPost]
+        //[ActionName("Create_Image")]
+        //public ActionResult AddGameImages(GameImageListItems imageCreate)
+        //{
+        //    var gameImageCreate = new GameImageListItems();
+        //    var service = CreateGameImageService();
+        //    var images = imageCreate.MapToModel();
+        //    for (int i = 0; i < images.Count(); i++)
+        //    {
+        //        //images.ElementAt(i).CreateDate = DateTime.Now;
+        //        //images.ElementAt(i).CreateUserId = User.Identity.GetUserId<int>();
+        //        //images.ElementAt(i).UpdateDate = DateTime.Now;
+        //        service.CreateGameImage(imageCreate);
+        //    }
+        //    return RedirectToAction("GameImages", new { id = gameImageCreate.GameId });
+        //}
+        //[HttpPost]
+        //public FileResult GetGameImage(int id)
+        //{
+        //    GameImageListItems img = CreateGameImageService().GetGameImageById(id);
+        //    return File(img.FileContent, img.FileType, img.FileName);
+        //}
 
-        [HttpPost]
-        [ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteGameImage(int id)
-        {
-            var service = CreateGameImageService();
+        //[HttpPost]
+        //[ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteGameImage(int id)
+        //{
+        //    var service = CreateGameImageService();
 
-            service.DeleteGameImage(id);
+        //    service.DeleteGameImage(id);
 
-            TempData["SaveResult"] = "Your note was deleted";
+        //    TempData["SaveResult"] = "Your note was deleted";
 
-            return RedirectToAction("Index");
-        }
+        //    return RedirectToAction("Index");
+        //}
     }
 }

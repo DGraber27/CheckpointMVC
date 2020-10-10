@@ -21,19 +21,19 @@ namespace CheckPoint.Services
         {
             _userId = userId;
         }
-        public bool CreateGame( GameCreate model)
+        public bool CreateGame(HttpPostedFileBase file, GameCreate model)
         {
-            //model.GameImage = ConvertToBytes(file);
+            model.GameImage = ConvertToBytes(file);
             var entity =
                 new Game()
                 {
-                    /*GameImage = model.GameImage,*/
+                    GameImage = model.GameImage,
                     Title = model.Title,
                     Description = model.Description,
                     PlatformId = model.PlatformID,
                     Developer = model.Developer,
                     ESRB = (Data.ESRB)model.ESRB,
-                    
+
                     ReleaseDate = model.ReleaseDate
                 };
 
@@ -43,14 +43,24 @@ namespace CheckPoint.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        
-        //public byte[] ConvertToBytes(HttpPostedFileBase image)
-        //{
-        //    byte[] imageBytes = null;
-        //    BinaryReader reader = new BinaryReader(image.InputStream);
-        //    imageBytes = reader.ReadBytes((int)image.ContentLength);
-        //    return imageBytes;
-        //}
+
+
+        public byte[] GetImageFromDB(int id)
+        {
+            using (var game = new ApplicationDbContext())
+            {
+                var q = from temp in game.Games where temp.GameId == id select temp.GameImage;
+                byte[] cover = q.First();
+                return cover;
+            }
+        }
+        public byte[] ConvertToBytes(HttpPostedFileBase image)
+        {
+            byte[] imageBytes = null;
+            BinaryReader reader = new BinaryReader(image.InputStream);
+            imageBytes = reader.ReadBytes((int)image.ContentLength);
+            return imageBytes;
+        }
         public IEnumerable<GameListItem> GetGames()
         {
             using (var ctx = new ApplicationDbContext())
@@ -62,7 +72,7 @@ namespace CheckPoint.Services
                         e =>
                         new GameListItem
                         {
-                            AllGameImages = ConvertDataEntitiesToImageViewModel(e.AllGameImages.ToList()),
+                            //AllGameImages = ConvertDataEntitiesToImageViewModel(e.AllGameImages.ToList()),
                             GameId = e.GameId,
                             Title = e.Title,
                             Description = e.Description,
@@ -74,16 +84,16 @@ namespace CheckPoint.Services
                             AllGameReviews = ConvertDataEntitiesToViewModel(e.AllGameReviews.ToList())
                         }
                         );
-              var games = query.ToArray();
+                var games = query.ToArray();
                 return games;
             }
         }
         // This method will take in the List<Review> from my Game entity.
         public List<ReviewListItem> ConvertDataEntitiesToViewModel(List<Review> reviews)
         {
-        // instantiate a new List<ReviewListItem>**
+            // instantiate a new List<ReviewListItem>**
             List<ReviewListItem> returnList = new List<ReviewListItem>();
-        // foreach through my entity.AllReviews 
+            // foreach through my entity.AllReviews 
             foreach (var review in reviews)
             {
                 //create a new ReviewListItem
@@ -94,35 +104,35 @@ namespace CheckPoint.Services
                 reviewListItem.Content = review.Content;
                 reviewListItem.StarRating = review.StarRating;
                 reviewListItem.CreatedUtc = review.CreatedUtc;
-               
-                // add ReviewListItem to my List<ReviewListItem>**
-                returnList.Add(reviewListItem);
-            }
-          //  return that List<ReviewListItem>**
-            return returnList;
-        }
-        public List<GameImageListItems> ConvertDataEntitiesToImageViewModel(List<GameImage> images)
-        {
-            // instantiate a new List<ReviewListItem>**
-            List<GameImageListItems> returnList = new List<GameImageListItems>();
-            // foreach through my entity.AllReviews 
-            foreach (var image in images)
-            {
-                //create a new ReviewListItem
-                var gameImageListItem = new GameImageListItems();
-                // assign it the values from the entity.AllReviews[i],
-                gameImageListItem.GameImageId = image.GameImageID;
-                gameImageListItem.FileContent = image.FileContent;
-                gameImageListItem.FileName = image.FileName;
-                gameImageListItem.FileType = image.FileType;
-                gameImageListItem.FileSize = image.FileSize;
 
                 // add ReviewListItem to my List<ReviewListItem>**
-                returnList.Add(gameImageListItem);
+                returnList.Add(reviewListItem);
             }
             //  return that List<ReviewListItem>**
             return returnList;
         }
+        //public List<GameImageListItems> ConvertDataEntitiesToImageViewModel(List<GameImage> images)
+        //{
+        //    // instantiate a new List<ReviewListItem>**
+        //    List<GameImageListItems> returnList = new List<GameImageListItems>();
+        //    // foreach through my entity.AllReviews 
+        //    foreach (var image in images)
+        //    {
+        //        //create a new ReviewListItem
+        //        var gameImageListItem = new GameImageListItems();
+        //        // assign it the values from the entity.AllReviews[i],
+        //        gameImageListItem.GameImageId = image.GameImageID;
+        //        gameImageListItem.FileContent = image.FileContent;
+        //        gameImageListItem.FileName = image.FileName;
+        //        gameImageListItem.FileType = image.FileType;
+        //        gameImageListItem.FileSize = image.FileSize;
+
+        //        // add ReviewListItem to my List<ReviewListItem>**
+        //        returnList.Add(gameImageListItem);
+        //    }
+        //    //  return that List<ReviewListItem>**
+        //    return returnList;
+        //}
         public GameDetail GetGameById(int id)
         {
             ReviewService reviewService = new ReviewService();
@@ -134,7 +144,7 @@ namespace CheckPoint.Services
                         .SingleOrDefault(e => e.GameId == id);
                 var detail = new GameDetail
                 {
-                    AllGameImages = ConvertDataEntitiesToImageViewModel(entity.AllGameImages.ToList()),
+                    //AllGameImages = ConvertDataEntitiesToImageViewModel(entity.AllGameImages.ToList()),
                     GameId = entity.GameId,
                     Title = entity.Title,
                     Description = entity.Description,
@@ -144,23 +154,18 @@ namespace CheckPoint.Services
                     ESRB = (Models.GameModels.ESRB)entity.ESRB,
                     ReleaseDate = entity.ReleaseDate,
                     //AverageStarRating = entity.AverageStarRating,
-                    AllGameReviews = ConvertDataEntitiesToViewModel(entity.AllGameReviews.ToList()) 
+                    AllGameReviews = ConvertDataEntitiesToViewModel(entity.AllGameReviews.ToList())
                 };
                 return detail;
-                //foreach (Review review in entity.AllGameReviews)
-                //{
-                //    ReviewListItem reviewListItem = (ReviewListItem)reviewService.GetReview();
-                //    detail.AllGameReviews.Add(reviewListItem);
-                //}
-                //return detail;
+
             }
         }
 
 
 
-        public bool UpdateGame(GameEdit model)
+        public bool UpdateGame(HttpPostedFileBase file, GameEdit model)
         {
-                //model.GameImage = ConvertToBytes(file);
+            model.GameImage = ConvertToBytes(file);
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
@@ -170,14 +175,14 @@ namespace CheckPoint.Services
                 //.Single(e => e.GameId == model.GameId);
                 if (entity != null)
                 {
-
-                entity.Title = model.Title;
-                entity.Description = model.Description;
-                entity.PlatformId = model.PlatformID;
-                entity.Developer = model.Developer;
-                entity.ESRB = (Data.ESRB)model.ESRB;
-                entity.ReleaseDate = model.ReleaseDate;
-                return ctx.SaveChanges() == 1;
+                    entity.GameImage = model.GameImage;
+                    entity.Title = model.Title;
+                    entity.Description = model.Description;
+                    entity.PlatformId = model.PlatformID;
+                    entity.Developer = model.Developer;
+                    entity.ESRB = (Data.ESRB)model.ESRB;
+                    entity.ReleaseDate = model.ReleaseDate;
+                    return ctx.SaveChanges() == 1;
                 }
                 return false;
             }
