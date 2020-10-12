@@ -7,13 +7,13 @@ namespace CheckPoint.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class InitialMigration : IMigrationMetadata
+    public sealed partial class GameImage : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialMigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(GameImage));
         
         string IMigrationMetadata.Id
         {
-            get { return "202010020234271_InitialMigration"; }
+            get { return "202010080242080_GameImage"; }
         }
         
         string IMigrationMetadata.Source

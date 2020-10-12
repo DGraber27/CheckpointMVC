@@ -21,7 +21,7 @@ namespace CheckPoint.Data
         public DateTime CreatedUtc { get; set; }
         public Guid AuthorId { get; set; }
         [ForeignKey(nameof (Game))]
-        public int GameId { get; set; }
+        public int? GameId { get; set; }
         public virtual Game Game { get; set; }
         //[ForeignKey(nameof(Platform))]
         //public int PlatformId { get; set; }

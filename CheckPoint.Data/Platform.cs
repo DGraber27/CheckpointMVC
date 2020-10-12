@@ -39,7 +39,7 @@ namespace CheckPoint.Data
                 return (AllGameReviews.Count > 0) ? Math.Round(totalAverageRating / AllGameReviews.Count) : 0;
             }
         }
-        public ICollection<Game> AllGames { get; set; } = new List<Game>();
+        public virtual ICollection<Game> AllGames { get; set; } = new List<Game>();
         public ICollection<Review> AllGameReviews { get; set; } = new List<Review>();
     }
 }

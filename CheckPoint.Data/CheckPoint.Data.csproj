@@ -55,14 +55,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Game.cs" />
+    <Compile Include="GameImage.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202010020234271_InitialMigration.cs" />
-    <Compile Include="Migrations\202010020234271_InitialMigration.Designer.cs">
-      <DependentUpon>202010020234271_InitialMigration.cs</DependentUpon>
+    <Compile Include="Migrations\202010061759287_InitialMigration.cs" />
+    <Compile Include="Migrations\202010061759287_InitialMigration.Designer.cs">
+      <DependentUpon>202010061759287_InitialMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202010021839206_GameImage.cs" />
-    <Compile Include="Migrations\202010021839206_GameImage.Designer.cs">
-      <DependentUpon>202010021839206_GameImage.cs</DependentUpon>
+    <Compile Include="Migrations\202010080242080_GameImage.cs" />
+    <Compile Include="Migrations\202010080242080_GameImage.Designer.cs">
+      <DependentUpon>202010080242080_GameImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010082043547_GameIdNullReview.cs" />
+    <Compile Include="Migrations\202010082043547_GameIdNullReview.Designer.cs">
+      <DependentUpon>202010082043547_GameIdNullReview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010091414437_GameImageTableRemoved.cs" />
+    <Compile Include="Migrations\202010091414437_GameImageTableRemoved.Designer.cs">
+      <DependentUpon>202010091414437_GameImageTableRemoved.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Platform.cs" />
@@ -74,11 +83,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202010020234271_InitialMigration.resx">
-      <DependentUpon>202010020234271_InitialMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202010061759287_InitialMigration.resx">
+      <DependentUpon>202010061759287_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010021839206_GameImage.resx">
-      <DependentUpon>202010021839206_GameImage.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202010080242080_GameImage.resx">
+      <DependentUpon>202010080242080_GameImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010082043547_GameIdNullReview.resx">
+      <DependentUpon>202010082043547_GameIdNullReview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010091414437_GameImageTableRemoved.resx">
+      <DependentUpon>202010091414437_GameImageTableRemoved.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

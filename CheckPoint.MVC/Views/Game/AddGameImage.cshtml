@@ -1,0 +1,35 @@
+﻿@*@model CheckPoint.Models.GameModels.GameImageCreate
+
+<form method="post" action="@Url.Action("Create_Image")" enctype="multipart/form-data">
+    <input type="file" name="ImageData" id="ImageData" onchange="fileCheck(this);" />
+    <div class="row">
+        <div class="col-md-12">
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                @Html.HiddenFor(model => model.GameId)
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Files, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.Files, new { @class = "form-control", type = "file", multiple = "multiple", accept = "image/x-png,image/gif,image/jpeg,image/jpg" })
+                        @Html.ValidationMessageFor(model => model.Files, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <input type="submit" value="Save" class="btn btn-primary" id="btnSave" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@

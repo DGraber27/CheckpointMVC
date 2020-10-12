@@ -34,6 +34,7 @@ namespace CheckPoint.Data
         public DbSet<Game> Games { get; set; }
         public DbSet<Platform> Platforms { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        //public DbSet<GameImage> GameImages { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -4,12 +4,19 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2 style="text-shadow: 2px 2px 2px #000000 !important;">@Html.DisplayFor(model => model.Title)</h2>
 
 <div>
-    <h4>GameDetail</h4>
+    <h4></h4>
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal" style="font-size: large; text-shadow: 2px 2px 2px #000000 !important;">
+        @*<dt>
+            @Html.DisplayNameFor(model => model.GameImage)
+        </dt>*@
+
+        <dd>
+            <img src="/Game/RetrieveImage/@Model.GameId" alt="" height=250 width=200 />
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.GameId)
         </dt>
@@ -35,11 +42,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Platforms)
+            @Html.DisplayNameFor(model => model.PlatTitle)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Platforms)
+            @Html.DisplayFor(model => model.PlatTitle)
         </dd>
 
         <dt>
@@ -55,7 +62,11 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ReleaseDate)
+            @{
+                string releaseDate = Model.ReleaseDate.ToString("d");
+            }
+            @Html.DisplayFor(modelItem => releaseDate)
+
         </dd>
 
         <dt>
@@ -67,8 +78,57 @@
         </dd>
 
     </dl>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.GameId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.GameId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div>
+
+    <div class=" col-md-12 " style="font-size:x-large; position: center;">
+        <h2 style="margin-bottom: 1em;">
+        @Html.DisplayNameFor(model => model.AllGameReviews)
+        </h2>
+
+    </div>
+    @foreach (var review in Model.AllGameReviews)
+    {
+
+        <div class="review-box col-md-6" style=" margin-bottom: 1em;">
+
+            <div class=" review-title col-md-12" style="font-size: large; font-weight: 700; color: #df691A; ">
+                @Html.DisplayFor(modelitem => review.Title)
+            </div>
+            <div class="review-content col-md-12" style="color: #4cff00 ">
+                @Html.DisplayFor(modelitem => review.StarRating)
+            </div>
+            <div class="review-content col-md-12">
+                @Html.DisplayFor(modelitem => review.Content)
+            </div>
+
+            <div class="review-content col-md-12">
+                @Html.DisplayFor(modelitem => review.CreatedUtc)
+            </div>
+
+        </div>
+
+    }
+</div>
+    <br />
+    <style>
+        .review-content {
+            font-size: medium;
+            text-shadow: 2px 2px 2px #000000 !important;
+        }
+
+        .review-box {
+            margin-left: 1em;
+        }
+
+        .review-title {
+            background-color: #4e5d6c;
+            padding: .5em;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 2px #000000 !important;
+        }
+    </style>

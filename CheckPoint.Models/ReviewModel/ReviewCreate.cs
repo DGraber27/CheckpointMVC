@@ -12,15 +12,15 @@ namespace CheckPoint.Models.ReviewModel
     public class ReviewCreate
     {
         [Required]
-          [ForeignKey(nameof(Game))]
+        [Display(Name = "Game ID")]
         public int GameId { get; set; }
-        public virtual Game Game {get; set;}
         [Required]
         public string Title { get; set; }
         [Required]
         public string Content { get; set; }
         [Display(Name = "User Score")]
         public double StarRating { get; set; }
+        [Display(Name = "Created")]
         public DateTime CreatedUtc { get; set; }
     }
 }

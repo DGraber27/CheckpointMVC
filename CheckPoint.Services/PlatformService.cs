@@ -72,7 +72,6 @@ namespace CheckPoint.Services
                         Description = entity.Description,
                         Manufacturor = entity.Manufacturor,
                         ReleaseYear = entity.ReleaseYear,
-                        AverageStarRating = entity.AverageStarRating
                     };
             }
         }

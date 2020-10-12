@@ -11,14 +11,23 @@ namespace CheckPoint.Models.GameModels
 {
     public class GameDetail
     {
+        [Display(Name = "Game ID")]
         public int GameId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public string Platforms { get; set; }
+        [Display(Name = "Platform")]
+        public int PlatformID { get; set; }
+        [Display(Name = "Platform")]
+        public string PlatTitle { get; set; }
         public string Developer { get; set; }
+        [Display(Name = "Maturity Rating")]
         public ESRB ESRB { get; set; }
+        [Display(Name = "Release Date")]
         public DateTime ReleaseDate { get; set; }
-        public List<ReviewListItem> AllGameReviews { get; set; }
+        [Display(Name = "Game Image")]
+        public byte[] GameImage { get; set; }
+        [Display(Name = "Reviews")]
+        public virtual List<ReviewListItem> AllGameReviews { get; set; }
         [Display(Name = "Average User Score")]
         public double AverageStarRating
         {
@@ -34,7 +43,7 @@ namespace CheckPoint.Models.GameModels
                 return (AllGameReviews.Count > 0) ? Math.Round(totalAverageRating / AllGameReviews.Count) : 0;
             }
         }
-        public byte[] GameImage { get; set; }
 
+        //public List<GameImageListItems> AllGameImages { get; set; }
     }
 }
