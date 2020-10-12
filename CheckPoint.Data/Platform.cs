@@ -24,7 +24,7 @@ namespace CheckPoint.Data
         [Required]
         public string Manufacturor { get; set; }
         [Required]
-        public DateTime ReleaseYear { get { return DateTime.Now; } set { } }
+        public DateTime ReleaseYear { get; set; }
         public double AverageStarRating
         {
             get

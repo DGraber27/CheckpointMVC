@@ -21,48 +21,51 @@
 }
 <table class="table table-striped table-hover">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.PlatformId)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Description)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Manufacturor)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ReleaseYear)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.AverageStarRating)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.PlatformId)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Description)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Manufacturor)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ReleaseYear)
+                @{
+                    string releaseDate = item.ReleaseYear.ToString("d");
+                }
+                @Html.DisplayFor(modelItem => releaseDate)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.AverageStarRating)
-            </td>
+            </td>*@
             <td class="btn-group">
                 <a href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
                 <ul class="dropdown-menu">
