@@ -21,9 +21,9 @@
 }
     <table class="table table-striped table-hover">
         <tr>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.ReviewId)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.GameTitle)
             </th>
@@ -45,9 +45,9 @@
         @foreach (var item in Model)
         {
     <tr>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.ReviewId)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.GameTitle)
         </td>
