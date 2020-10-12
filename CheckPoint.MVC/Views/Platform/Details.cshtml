@@ -47,7 +47,10 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ReleaseYear)
+            @{
+                string releaseDate = Model.ReleaseYear.ToString("d");
+            }
+            @Html.DisplayFor(modelItem => releaseDate)
         </dd>
 
         <dt>
