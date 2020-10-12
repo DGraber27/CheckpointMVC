@@ -184,6 +184,7 @@
   <ItemGroup>
     <Content Include="Assets\god-of-war.jpg" />
     <Content Include="Assets\image-placeholder.jpg" />
+    <Content Include="Assets\videogamebackground.jpg" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
