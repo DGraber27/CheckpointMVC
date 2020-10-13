@@ -73,6 +73,10 @@
     <Compile Include="Migrations\202010091414437_GameImageTableRemoved.Designer.cs">
       <DependentUpon>202010091414437_GameImageTableRemoved.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010130001027_OwnerId.cs" />
+    <Compile Include="Migrations\202010130001027_OwnerId.Designer.cs">
+      <DependentUpon>202010130001027_OwnerId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Platform.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -94,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010091414437_GameImageTableRemoved.resx">
       <DependentUpon>202010091414437_GameImageTableRemoved.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010130001027_OwnerId.resx">
+      <DependentUpon>202010130001027_OwnerId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
