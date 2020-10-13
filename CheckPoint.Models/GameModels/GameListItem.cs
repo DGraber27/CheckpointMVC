@@ -13,7 +13,7 @@ namespace CheckPoint.Models.GameModels
     public enum ESRB { eC, E, E10, T, M, AO, RP, KA }
     public class GameListItem
     {
-        [Display(Name = "Game ID")]
+        [Display(Name = "Game")]
         public int GameId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }

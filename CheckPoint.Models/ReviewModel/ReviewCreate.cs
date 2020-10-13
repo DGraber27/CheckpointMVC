@@ -12,7 +12,7 @@ namespace CheckPoint.Models.ReviewModel
     public class ReviewCreate
     {
         [Required]
-        [Display(Name = "Game ID")]
+        [Display(Name = "Game")]
         public int GameId { get; set; }
         [Display(Name = "Author")]
         public Guid OwnerId { get; set; }
