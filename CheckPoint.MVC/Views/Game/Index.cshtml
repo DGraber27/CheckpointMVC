@@ -7,9 +7,9 @@
 <h2 style="text-shadow: 2px 2px 2px #000000 !important;">Games Library</h2>
 
 
-<p class="Create" style="text-shadow: 2px 2px 2px #000000 !important;">
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h4 class="Create" style="text-shadow: 2px 2px 2px #000000 !important;">
+@Html.ActionLink("Create New", "Create", new { @class = "create-new" })
+</h4>
 
 @if (TempData.ContainsKey("SaveResult"))
 {
@@ -21,48 +21,48 @@
         @TempData["SaveResult"]
     </div>
 }
-<div class="main-body"> </div>
-@foreach (var item in Model)
-{
-    <div class="col-md-3 card" style="text-shadow: 2px 2px 2px #000000 !important; ">
-        <div class="card-body">
-            <div class="card-image">
-                <img src="/Game/RetrieveImage/@item.GameId" alt="" height=300 width=275 />
-            </div>
-            <div class="card-text">
+<div class="main-body">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 card" style="text-shadow: 2px 2px 2px #000000 !important; ">
+            <div class="card-body">
+                <div class="card-image">
+                    <img src="/Game/RetrieveImage/@item.GameId" alt="" height=300 width=275 />
+                </div>
+                <div class="card-text">
 
-                <div class="card-title " style="font-size: large">
-                    @Html.DisplayFor(modelItem => item.Title)
+                    <div class="card-title col-md-10" style="font-size: large">
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </div>
+                    <div class="card-rating col-md-2" style="font-size: large">
+                        @Html.DisplayFor(modelItem => item.ESRB)
+                    </div>
                 </div>
-                <div class="card-rating" style="font-size: large">
-                    @Html.DisplayFor(modelItem => item.ESRB)
-                </div>
+            </div>
+
+            <div class="card-drop">
+                <a href="#" class=" col-md-3 btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.GameId })
+                    </li>
+                    <li>
+                        @Html.ActionLink("Details", "Details", new { id = item.GameId })
+                    </li>
+                    <li>
+                        @Html.ActionLink("Delete", "Delete", new { id = item.GameId })
+                    </li>
+                </ul>
+
+                <div class="col-md-4 review-sink"> @Html.ActionLink("Review", "Create", "Review", new { Controller = "Review" }, new { @class = "review-link" })</div>
             </div>
         </div>
-
-        <div class="card-drop">
-            <a href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.GameId })
-                </li>
-                <li>
-                    @Html.ActionLink("Details", "Details", new { id = item.GameId })
-                </li>
-                <li>
-                    @Html.ActionLink("Delete", "Delete", new { id = item.GameId })
-                </li>
-            </ul>
-
-        <button href="~/Views/Review/Create.cshtml" class=" btn btn-success" style="color: #ebebeb">Review</button>
-        </div>
-    </div>
-
-}
+    }
+</div>
 <style>
     .main-body {
-        margin-top: 1em;
     }
+
     .card {
         padding: 0 0 1px 0;
         margin: 2em;
@@ -79,22 +79,46 @@
         max-height: 390px !important;
         color: #ebebeb;
     }
+
     .card-text {
         padding: 5px;
     }
+
     .card-title {
     }
 
     .card-image {
-     
     }
 
     .card-rating {
+        background-color: rgba(54, 63, 73, 0.91);
+        /*  margin: 0 -4px;
+        padding: 5px;*/
+        color: #df691a;
+        /*margin-right: .6em;*/
+        float: right;
+        font-weight: 700;
+        font-size: large !important;
+        text-align: center;
+        position: inherit;
+        border-radius: 10%;
     }
 
-    .card-drop {
+    .review-sink {
+        color: #ebebeb !important;
+        padding: 9px 0px;
+        margin: 0;
     }
-    .review-btn {
-        background-color:#4e5d6c;
+
+    .review-link {
+        background-color: #4e5d6c;
+        color: #ebebeb !important;
+        padding: .7em 1em;
     }
+
+        .review-link:hover {
+            text-decoration: none;
+         /*   background-color: rgba(164, 117, 51, 0.92);*/
+            background-color: rgba(202, 97, 26, 0.76);
+        }
 </style>

@@ -43,7 +43,7 @@ namespace CheckPoint.MVC.Controllers
             var platformservice = CreatePlatformService();
 
             var platforms = platformservice.GetPlatform();
-            var platform = new SelectList(platforms, "PlatformID", "Title");
+            var platform = new SelectList(platforms.OrderBy(p=>p.Title).ToList(), "PlatformID", "Title");
             ViewBag.Platform = platform;
             return View();
         }
@@ -95,7 +95,7 @@ namespace CheckPoint.MVC.Controllers
         {
             var platformservice = CreatePlatformService();
             var platforms = platformservice.GetPlatform();
-            var platform = new SelectList(platforms, "PlatformID", "Title");
+            var platform = new SelectList(platforms.OrderBy(p => p.Title).ToList(), "PlatformID", "Title");
             ViewBag.Platform = platform;
             var service = CreateGameService();
             var detail = service.GetGameById(id);

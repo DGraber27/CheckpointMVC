@@ -23,7 +23,7 @@ namespace CheckPoint.MVC.Controllers
         {
             var gameService = CreateGameService();
             var gameID = gameService.GetGames();
-            var game = new SelectList(gameID, "GameID", "Title");
+            var game = new SelectList(gameID.OrderBy(g=> g.Title).ToList(), "GameID", "Title");
             ViewBag.Game = game;
             return View();
         }
@@ -74,7 +74,7 @@ namespace CheckPoint.MVC.Controllers
         {
             var gameService = CreateGameService();
             var gameID = gameService.GetGames();
-            var game = new SelectList(gameID, "GameID", "Title");
+            var game = new SelectList(gameID.OrderBy(g => g.Title).ToList(), "GameID", "Title");
             ViewBag.Game = game;
             var service = CreateReviewService();
             var detail = service.GetReviewById(id);
