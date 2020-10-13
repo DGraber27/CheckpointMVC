@@ -7,9 +7,9 @@
 <h2 style="text-shadow: 2px 2px 2px #000000 !important;">Games Library</h2>
 
 
-<p class="Create" style="text-shadow: 2px 2px 2px #000000 !important;">
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h4 class="Create" style="text-shadow: 2px 2px 2px #000000 !important;">
+@Html.ActionLink("Create New", "Create", new { @class = "create-new" })
+</h4>
 
 @if (TempData.ContainsKey("SaveResult"))
 {
@@ -21,77 +21,27 @@
         @TempData["SaveResult"]
     </div>
 }
-<table class="table table-striped table-hover" style="text-shadow: 2px 2px 2px #000000 !important;">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.GameImage)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.GameId)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        @*<th>*@
-        <!--@Html.DisplayNameFor(model => model.Description)
-        </th>-->
-        <th>
-            @Html.DisplayNameFor(model => model.ESRB)
-        </th>
-        @*<th>
-                @Html.DisplayNameFor(model => model.PlatTitle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Developer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ReleaseDate)
-            </th>*@
-        <th></th>
-    </tr>
-
+<div class="main-body">
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @*@if (item.GameImage != null)
-                { }*@
-                    <img src="/Game/RetrieveImage/@item.GameId" alt="" height=250 width=200 />
-                
-                @*else if (item.GameImage == null)
-                {
-                    <img src="~/Assets/image-placeholder.jpg" alt="" height=250 width=200 />
-                }*@
-            </td>
-            @*<td style="font-size: large">
-                @Html.DisplayFor(modelItem => item.GameId)
-            </td>*@
-            <td style="font-size: large">
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>*@
-            <td style="font-size: large">
-                @Html.DisplayFor(modelItem => item.ESRB)
-            </td>
-            
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.PlatTitle)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Developer)
-                </td>
-                <td>
-                    @{
-                        string releaseDate = item.ReleaseDate.ToString("d");
-                    }
-                    @Html.DisplayFor(modelItem => releaseDate)
-                </td>*@
+        <div class="col-md-3 card" style="text-shadow: 2px 2px 2px #000000 !important; ">
+            <div class="card-body">
+                <div class="card-image">
+                    <img src="/Game/RetrieveImage/@item.GameId" alt="" height=300 width=275 />
+                </div>
+                <div class="card-text">
 
-           
-            <td class="btn-group" style="border: 0 !important; margin-top: .5em;">
-                <a href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+                    <div class="card-title col-md-10" style="font-size: large">
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </div>
+                    <div class="card-rating col-md-2" style="font-size: large">
+                        @Html.DisplayFor(modelItem => item.ESRB)
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-drop">
+                <a href="#" class=" col-md-3 btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li>
                         @Html.ActionLink("Edit", "Edit", new { id = item.GameId })
@@ -103,34 +53,72 @@
                         @Html.ActionLink("Delete", "Delete", new { id = item.GameId })
                     </li>
                 </ul>
-                @*<div class="row">
-                    <div class="col-md-12">
-                        <button type="button" class="btn btn-success" id="btnAddImages">Add Images</button>
-                        @Html.ActionLink("Add Image", "Create_Image", new { id = item.GameId})
-                    </div>
-                </div>*@
-            </td>
-            
-        </tr>
-    }
-</table>
-@*<div class="modal fade" id="addImagesModal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
-    <div class="modal-dialog modal-xl" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="gridSystemModalLabel">Images</h4>
-            </div>
-            <div class="modal-body">
-                <div id="imagesDiv"></div>
+
+                <div class="col-md-4 review-sink"> @Html.ActionLink("Review", "Create", "Review", new { Controller = "Review" }, new { @class = "review-link" })</div>
             </div>
         </div>
-    </div>
-</div>*@
-@*<script>
-    var imgId = null;
-    $("#btnAddImages").click(function () {
-        $("#addImagesModal").modal("show");
-        $("#imagesDiv").load("/Game/GetGameImages/" + @ViewBag.GameId)
-    });
-</script>*@
+    }
+</div>
+<style>
+    .main-body {
+    }
+
+    .card {
+        padding: 0 0 1px 0;
+        margin: 2em;
+        /* border: 1px solid white;*/
+        min-height: 410px !important;
+    }
+
+    .card-body {
+        border: 5px solid #df691a;
+        border-radius: 5px 0;
+        background-color: #4e5d6c;
+        width: 285px;
+        min-height: 390px !important;
+        max-height: 390px !important;
+        color: #ebebeb;
+    }
+
+    .card-text {
+        padding: 5px;
+    }
+
+    .card-title {
+    }
+
+    .card-image {
+    }
+
+    .card-rating {
+        background-color: rgba(54, 63, 73, 0.91);
+        /*  margin: 0 -4px;
+        padding: 5px;*/
+        color: #df691a;
+        /*margin-right: .6em;*/
+        float: right;
+        font-weight: 700;
+        font-size: large !important;
+        text-align: center;
+        position: inherit;
+        border-radius: 10%;
+    }
+
+    .review-sink {
+        color: #ebebeb !important;
+        padding: 9px 0px;
+        margin: 0;
+    }
+
+    .review-link {
+        background-color: #4e5d6c;
+        color: #ebebeb !important;
+        padding: .7em 1em;
+    }
+
+        .review-link:hover {
+            text-decoration: none;
+         /*   background-color: rgba(164, 117, 51, 0.92);*/
+            background-color: rgba(202, 97, 26, 0.76);
+        }
+</style>

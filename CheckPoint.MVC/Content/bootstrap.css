@@ -179,7 +179,6 @@ input[type="submit"] {
 
 input {
     line-height: normal;
-    color: #
 }
 
     input[type="checkbox"],
@@ -3189,7 +3188,6 @@ label {
 input[type="search"] {
     box-sizing: border-box;
     -webkit-appearance: none;
-    appearance: none;
 }
 
 input[type="radio"],
@@ -4309,7 +4307,7 @@ tbody.collapse.in {
     min-width: 160px;
     padding: 5px 0;
     margin: 2px 0 0;
-    font-size: 15px;
+    font-size: 30px;
     text-align: left;
     list-style: none;
     background-color: #4e5d6c;
@@ -4335,6 +4333,7 @@ tbody.collapse.in {
         display: block;
         padding: 3px 20px;
         clear: both;
+        font-size: 15px !important;
         font-weight: 400;
         line-height: 1.42857143;
         color: #ebebeb;
@@ -4345,7 +4344,7 @@ tbody.collapse.in {
         .dropdown-menu > li > a:focus {
             color: #ebebeb;
             text-decoration: none;
-            background-color: #485563;
+            background-color: #df691a;
         }
 
     .dropdown-menu > .active > a,
@@ -4393,7 +4392,7 @@ tbody.collapse.in {
 .dropdown-header {
     display: block;
     padding: 3px 20px;
-    font-size: 12px;
+    font-size: x-large !important;
     line-height: 1.42857143;
     color: #2b3e50;
     white-space: nowrap;
@@ -5072,6 +5071,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     min-height: 40px;
     margin-bottom: 21px;
     border: 1px solid transparent;
+    padding: 10px 0;
+    font-size: 15px !important;
 }
 
 @media (min-width: 768px) {
@@ -5193,16 +5194,18 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-brand {
+    position:relative;
     float: left;
     height: 40px;
     padding: 9.5px 15px;
-    font-size: 19px;
+    font-size: 22px;
     line-height: 21px;
 }
 
     .navbar-brand:hover,
     .navbar-brand:focus {
         text-decoration: none;
+        color: #f0ad4e !important;
     }
 
     .navbar-brand > img {
@@ -5467,7 +5470,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 
         .navbar-default .navbar-brand:hover,
         .navbar-default .navbar-brand:focus {
-            color: #df691a;
+            color: #f0ad4e;
             background-color: transparent;
         }
 
@@ -6593,8 +6596,6 @@ button.list-group-item-danger {
 .panel-heading {
     padding: 10px 15px;
     border-bottom: 1px solid transparent;
-    border-top-left-radius: -1;
-    border-top-right-radius: -1;
 }
 
     .panel-heading > .dropdown .dropdown-toggle {
@@ -6620,8 +6621,6 @@ button.list-group-item-danger {
     padding: 10px 15px;
     background-color: #485563;
     border-top: 1px solid transparent;
-    border-bottom-right-radius: -1;
-    border-bottom-left-radius: -1;
 }
 
 .panel > .list-group,
@@ -6638,15 +6637,11 @@ button.list-group-item-danger {
     .panel > .list-group:first-child .list-group-item:first-child,
     .panel > .panel-collapse > .list-group:first-child .list-group-item:first-child {
         border-top: 0;
-        border-top-left-radius: -1;
-        border-top-right-radius: -1;
     }
 
     .panel > .list-group:last-child .list-group-item:last-child,
     .panel > .panel-collapse > .list-group:last-child .list-group-item:last-child {
         border-bottom: 0;
-        border-bottom-right-radius: -1;
-        border-bottom-left-radius: -1;
     }
 
 .panel > .panel-heading + .panel-collapse > .list-group .list-group-item:first-child {
@@ -6675,18 +6670,14 @@ button.list-group-item-danger {
         padding-left: 15px;
     }
 
-    .panel > .table:first-child,
+   /* .panel > .table:first-child,
     .panel > .table-responsive:first-child > .table:first-child {
-        border-top-left-radius: -1;
-        border-top-right-radius: -1;
     }
 
         .panel > .table:first-child > thead:first-child > tr:first-child,
         .panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child,
         .panel > .table:first-child > tbody:first-child > tr:first-child,
         .panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child {
-            border-top-left-radius: -1;
-            border-top-right-radius: -1;
         }
 
             .panel > .table:first-child > thead:first-child > tr:first-child td:first-child,
@@ -6697,7 +6688,6 @@ button.list-group-item-danger {
             .panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child th:first-child,
             .panel > .table:first-child > tbody:first-child > tr:first-child th:first-child,
             .panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child th:first-child {
-                border-top-left-radius: -1;
             }
 
             .panel > .table:first-child > thead:first-child > tr:first-child td:last-child,
@@ -6708,21 +6698,16 @@ button.list-group-item-danger {
             .panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child th:last-child,
             .panel > .table:first-child > tbody:first-child > tr:first-child th:last-child,
             .panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child th:last-child {
-                border-top-right-radius: -1;
             }
 
     .panel > .table:last-child,
     .panel > .table-responsive:last-child > .table:last-child {
-        border-bottom-right-radius: -1;
-        border-bottom-left-radius: -1;
     }
 
         .panel > .table:last-child > tbody:last-child > tr:last-child,
         .panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child,
         .panel > .table:last-child > tfoot:last-child > tr:last-child,
         .panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child {
-            border-bottom-right-radius: -1;
-            border-bottom-left-radius: -1;
         }
 
             .panel > .table:last-child > tbody:last-child > tr:last-child td:first-child,
@@ -6733,7 +6718,6 @@ button.list-group-item-danger {
             .panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child th:first-child,
             .panel > .table:last-child > tfoot:last-child > tr:last-child th:first-child,
             .panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child th:first-child {
-                border-bottom-left-radius: -1;
             }
 
             .panel > .table:last-child > tbody:last-child > tr:last-child td:last-child,
@@ -6744,8 +6728,7 @@ button.list-group-item-danger {
             .panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child th:last-child,
             .panel > .table:last-child > tfoot:last-child > tr:last-child th:last-child,
             .panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child th:last-child {
-                border-bottom-right-radius: -1;
-            }
+            }*/
 
     .panel > .panel-body + .table,
     .panel > .panel-body + .table-responsive,
@@ -7070,7 +7053,6 @@ button.close {
     background: transparent;
     border: 0;
     -webkit-appearance: none;
-    appearance: none;
 }
 
 .modal-open {
@@ -7476,7 +7458,7 @@ button.close {
     font-size: 15px;
     background-color: #485563;
     border-bottom: 1px solid #3d4954;
-    border-radius: -1 -1 0 0;
+    border-radius: 0 0 0 0;
 }
 
 .popover-content {
