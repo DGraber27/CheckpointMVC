@@ -14,7 +14,7 @@ namespace CheckPoint.Models.ReviewModel
         public int ReviewId { get; set; }
         [Display(Name = "Author")]
         public Guid OwnerId { get; set; }
-        [Display(Name = "Game ID")]
+        [Display(Name = "Game ")]
         public int GameId { get; set; }
         [Display(Name = "Game Title")]
         public string GameTitle { get; set; }
