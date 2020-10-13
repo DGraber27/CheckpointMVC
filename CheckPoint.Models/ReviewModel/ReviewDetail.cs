@@ -11,6 +11,8 @@ namespace CheckPoint.Models.ReviewModel
     {
         [Display(Name = "Review ID")]
         public int ReviewId { get; set; }
+        [Display(Name = "Author")]
+        public Guid OwnerId { get; set; }
         [Display(Name = "Game ID")]
         public int GameId { get; set; }
         [Display(Name = "Game Title")]

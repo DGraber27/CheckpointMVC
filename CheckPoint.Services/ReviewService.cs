@@ -22,6 +22,7 @@ namespace CheckPoint.Services
             var entity =
                 new Review()
                 {
+                    OwnerId = _userId,
                     GameId = model.GameId,
                     Title = model.Title,
                     Content = model.Content,
@@ -42,6 +43,7 @@ namespace CheckPoint.Services
                 var query =
                     ctx
                     .Reviews
+                    .Where(e=> e.OwnerId == _userId)
                     .Select(
                         e =>
                         new ReviewListItem
@@ -65,7 +67,7 @@ namespace CheckPoint.Services
                 var entity =
                     ctx
                         .Reviews
-                        .Single(e => e.ReviewId == id);
+                        .Single(e => e.ReviewId == id && e.OwnerId == _userId);
                 return
                     new ReviewDetail
                     {
@@ -86,7 +88,7 @@ namespace CheckPoint.Services
                 var entity =
                     ctx
                     .Reviews
-                    .Single(e => e.ReviewId == model.ReviewId);
+                    .Single(e => e.ReviewId == model.ReviewId && e.OwnerId == _userId);
                 entity.Title = model.Title;
                 entity.Content = model.Content;
                 entity.StarRating = model.StarRating;
@@ -103,7 +105,7 @@ namespace CheckPoint.Services
                 var entity =
                     ctx
                         .Reviews
-                        .Single(e => e.ReviewId == reviewId);
+                        .Single(e => e.ReviewId == reviewId && e.OwnerId == _userId);
 
                 ctx.Reviews.Remove(entity);
 
