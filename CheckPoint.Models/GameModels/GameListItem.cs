@@ -40,7 +40,7 @@ namespace CheckPoint.Models.GameModels
                     totalAverageRating += starRating.StarRating;
                 }
 
-                return (AllGameReviews.Count > 0) ? Math.Round(totalAverageRating / AllGameReviews.Count) : 0;
+                return (AllGameReviews.Count > 0) ? (totalAverageRating / AllGameReviews.Count) : 0;
             }
         }
         public virtual List<ReviewListItem> AllGameReviews { get; set; }

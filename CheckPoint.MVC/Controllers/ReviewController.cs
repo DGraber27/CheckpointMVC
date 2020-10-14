@@ -27,6 +27,16 @@ namespace CheckPoint.MVC.Controllers
             ViewBag.Game = game;
             return View();
         }
+        public ActionResult CreateWithDefault(int gameId)
+        {
+            var reviewCreate = new ReviewCreate();
+            reviewCreate.GameId = gameId;
+            var gameService = CreateGameService();
+            var gameID = gameService.GetGames();
+            var game = new SelectList(gameID.OrderBy(g => g.Title).ToList(), "GameID", "Title");
+            ViewBag.Game = game;
+            return View("Create", reviewCreate);
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(ReviewCreate model)
