@@ -16,14 +16,22 @@ $ git clone https://github.com/DGraber27/CheckpointMVC.git
 
 ## Directions
 
--For the best experience using Checkpoint, I recommend utilizing the deployed web application: (https://thecheckpoint.azurewebsites.net/Game).
--Register and login to access the app. 
--In the Games Library you can add, edit, and review your favorite games.
-**If you choose to edit a game, you must re-add the Game Image otherwise it will save the game Image as null in the Game's library and the image will not display.**
--In the platforms library you can add and edit all gaming platforms you can think of.
--In the reviews table you can create reviews for any games inside the games library!
-**You cannot delete a game that has a review attached to it. This is to prevent someone delete a game that someone else has done the work to create a review.**
+- For the best experience using Checkpoint, I recommend utilizing the deployed web application: (https://thecheckpoint.azurewebsites.net/Game).
+
+- Register and login to access the app. 
+
+- In the Games Library you can add, edit, and review your favorite games.
+
+- **If you choose to edit a game, you must re-add the Game Image otherwise it will save the game Image as null in the Game's library and the image will not display.**
+
+- In the platforms library you can add and edit all gaming platforms you can think of.
+
+- In the reviews table you can create reviews for any games inside the games library!
+
+- **You cannot delete a game that has a review attached to it. This is to prevent someone delete a game that someone else has done the work to create a review.**
+
 Enjoy the application!
+
 **Note:**  There are still multiple bugs I am aware of and working to fix. Thank you for your patience.
 
 ## Contributing
