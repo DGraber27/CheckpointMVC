@@ -39,6 +39,23 @@ namespace CheckPoint.MVC.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        public ActionResult CreateWithDefault(ReviewCreate model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            var service = CreateReviewService();
+
+            if (service.CreateReview(model))
+            {
+                TempData["SaveResult"] = "Your Review was created.";
+                return RedirectToAction("Index");
+            }
+            ModelState.AddModelError("", "Ash, you cannot use this item at this time.");
+
+            return View(model);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(ReviewCreate model)
         {
             if (!ModelState.IsValid) return View(model);
@@ -47,7 +64,7 @@ namespace CheckPoint.MVC.Controllers
 
             if (service.CreateReview(model))
             {
-                TempData["SaveResult"] = "Your Game was created.";
+                TempData["SaveResult"] = "Your Review was created.";
                 return RedirectToAction("Index");
             }
             ModelState.AddModelError("", "Ash, you cannot use this item at this time.");
