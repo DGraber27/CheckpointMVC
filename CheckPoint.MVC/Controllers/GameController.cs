@@ -161,7 +161,7 @@ namespace CheckPoint.MVC.Controllers
 
             service.DeleteGame(id);
 
-            TempData["SaveResult"] = "Your note was deleted";
+            TempData["SaveResult"] = "Your game was deleted";
 
             return RedirectToAction("Index");
         }

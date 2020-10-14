@@ -114,7 +114,7 @@ namespace CheckPoint.MVC.Controllers
 
             service.DeletePlatform(id);
 
-            TempData["SaveResult"] = "Your note was deleted";
+            TempData["SaveResult"] = "Your platform was deleted";
 
             return RedirectToAction("Index");
         }

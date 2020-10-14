@@ -5,12 +5,12 @@
 }
 
 <h2 style="text-shadow: 2px 2px 2px #000000 !important;">Games Library</h2>
-
+<h5 style="text-shadow: 2px 2px 2px #000000 !important;">Welcome to The Checkpoint Games Library. Here you can Create, Edit and Review your favorite Games!</h5>
+<br />
 
 <h4 class="Create" style="text-shadow: 2px 2px 2px #000000 !important;">
 @Html.ActionLink("Create New", "Create", new { @class = "create-new" })
 </h4>
-<h5 style="text-shadow: 2px 2px 2px #000000 !important;">Welcome to The Checkpoint Games Library. Here you can Create, Edit and Review your favorite Games!</h5>
 @if (TempData.ContainsKey("SaveResult"))
 {
     <div class="alert alert-success fade in" role="alert">
@@ -107,7 +107,7 @@
     .review-sink {
         color: #ebebeb !important;
         padding: 9px 0px;
-        margin-top: 1.4px;
+        margin-top: 0px;
     }
 
     .review-link {

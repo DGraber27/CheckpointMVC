@@ -133,11 +133,11 @@ namespace CheckPoint.MVC.Controllers
 
             if (service.UpdateReview(model))
             {
-                TempData["SaveResult"] = "Your game was updated.";
+                TempData["SaveResult"] = "Your review was updated.";
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", "Your game could not be updated.");
+            ModelState.AddModelError("", "Your review could not be updated.");
             return View(model);
         }
 
@@ -159,7 +159,7 @@ namespace CheckPoint.MVC.Controllers
 
             service.DeleteReview(id);
 
-            TempData["SaveResult"] = "Your note was deleted";
+            TempData["SaveResult"] = "Your review was deleted";
 
             return RedirectToAction("Index");
         }
